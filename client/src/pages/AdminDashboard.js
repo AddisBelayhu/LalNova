@@ -101,7 +101,7 @@ const AdminDashboard = () => {
         return {
           title: '',
           description: '',
-          technologiesUsed: [],
+          technologiesUsed: '',
           imageUrl: '',
           link: ''
         };
@@ -260,7 +260,7 @@ const AdminDashboard = () => {
                       </div>
                       <p className="text-gray-600 text-sm mb-2">{project.description}</p>
                       <div className="flex flex-wrap gap-1">
-                        {project.technologiesUsed.slice(0, 3).map((tech, index) => (
+                        {project.technologiesUsed.split(', ').slice(0, 3).map((tech, index) => (
                           <span key={index} className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">
                             {tech}
                           </span>
@@ -381,8 +381,8 @@ const AdminDashboard = () => {
                   <input
                     type="text"
                     placeholder="Technologies (comma-separated)"
-                    value={Array.isArray(formData.technologiesUsed) ? formData.technologiesUsed.join(', ') : ''}
-                    onChange={(e) => setFormData({...formData, technologiesUsed: e.target.value.split(', ')})}
+                    value={formData.technologiesUsed || ''}
+                    onChange={(e) => setFormData({...formData, technologiesUsed: e.target.value})}
                     className="w-full px-4 py-2 border rounded-lg"
                   />
                   <input

@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -12,19 +12,19 @@ model User {
   fullName     String   @map("full_name")
   email        String   @unique
   passwordHash String   @map("password_hash")
-  role         Role     @default(VISITOR)
+  role         String   @default("VISITOR")
   createdAt    DateTime @default(now()) @map("created_at")
 
   @@map("users")
 }
 
 model Service {
-  id          String          @id @default(cuid())
+  id          String   @id @default(cuid())
   title       String
   description String
   icon        String
-  category    ServiceCategory
-  createdAt   DateTime        @default(now()) @map("created_at")
+  category    String
+  createdAt   DateTime @default(now()) @map("created_at")
 
   @@map("services")
 }
@@ -33,7 +33,7 @@ model Project {
   id                String   @id @default(cuid())
   title             String
   description       String
-  technologiesUsed  String[] @map("technologies_used")
+  technologiesUsed  String   @map("technologies_used")
   imageUrl          String?  @map("image_url")
   link              String?
   createdAt         DateTime @default(now()) @map("created_at")
@@ -50,16 +50,4 @@ model ContactMessage {
   createdAt DateTime @default(now()) @map("created_at")
 
   @@map("contact_messages")
-}
-
-enum Role {
-  ADMIN
-  VISITOR
-}
-
-enum ServiceCategory {
-  SOFTWARE_DEV
-  CONSULTANCY
-  CLOUD
-  INTEGRATION
 }

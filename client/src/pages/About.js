@@ -58,7 +58,7 @@ const About = () => {
             <div>
               <h2 className="text-3xl font-bold text-secondary mb-6">Our Story</h2>
               <p className="text-gray-600 mb-4">
-                Founded in 2019, LalNova Technologies emerged from a vision to bridge 
+                Founded in 2025, LalNova Technologies emerged from a vision to bridge 
                 the gap between cutting-edge technology and practical business solutions. 
                 Our journey began with a small team of passionate developers and has 
                 grown into a comprehensive technology partner for businesses worldwide.

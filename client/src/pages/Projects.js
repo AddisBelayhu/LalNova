@@ -45,7 +45,7 @@ const Projects = () => {
       <section className="bg-gradient-to-br from-primary to-blue-800 text-white section-padding">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Our Portfolio
+            LalNova's Portfolio
           </h1>
           <p className="text-xl text-blue-100">
             Explore our latest projects and see how we've helped businesses 
@@ -100,7 +100,7 @@ const Projects = () => {
                   </p>
                   
                   <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologiesUsed.map((tech, index) => (
+                    {project.technologiesUsed.split(', ').map((tech, index) => (
                       <span 
                         key={index}
                         className="px-3 py-1 bg-blue-100 text-primary text-sm rounded-full font-medium"

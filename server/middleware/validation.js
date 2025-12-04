@@ -37,7 +37,7 @@ const schemas = {
   project: Joi.object({
     title: Joi.string().min(3).max(200).required(),
     description: Joi.string().min(10).max(1000).required(),
-    technologiesUsed: Joi.array().items(Joi.string()).min(1).required(),
+    technologiesUsed: Joi.string().min(1).required(),
     imageUrl: Joi.string().uri().optional(),
     link: Joi.string().uri().optional()
   })

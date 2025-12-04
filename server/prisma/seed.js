@@ -1,5 +1,6 @@
 const { PrismaClient } = require('@prisma/client');
 const bcrypt = require('bcryptjs');
+require('dotenv').config({ path: require('path').join(__dirname, '../../.env') });
 
 const prisma = new PrismaClient();
 
@@ -46,11 +47,11 @@ async function main() {
     }
   ];
 
+  // Clear existing data and create new services
+  await prisma.service.deleteMany({});
   for (const service of services) {
-    await prisma.service.upsert({
-      where: { title: service.title },
-      update: {},
-      create: service
+    await prisma.service.create({
+      data: service
     });
   }
 
@@ -59,31 +60,31 @@ async function main() {
     {
       title: 'E-Commerce Platform',
       description: 'A modern, scalable e-commerce solution with advanced analytics and inventory management.',
-      technologiesUsed: ['React', 'Node.js', 'PostgreSQL', 'AWS'],
+      technologiesUsed: 'React, Node.js, PostgreSQL, AWS',
       imageUrl: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500',
       link: 'https://example-ecommerce.com'
     },
     {
       title: 'Healthcare Management System',
       description: 'Comprehensive healthcare platform for patient management and medical records.',
-      technologiesUsed: ['Vue.js', 'Express', 'MongoDB', 'Docker'],
+      technologiesUsed: 'Vue.js, Express, MongoDB, Docker',
       imageUrl: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=500',
       link: 'https://example-healthcare.com'
     },
     {
       title: 'Financial Analytics Dashboard',
       description: 'Real-time financial data visualization and reporting platform for investment firms.',
-      technologiesUsed: ['Angular', 'Python', 'PostgreSQL', 'D3.js'],
+      technologiesUsed: 'Angular, Python, PostgreSQL, D3.js',
       imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500',
       link: 'https://example-finance.com'
     }
   ];
 
+  // Clear existing data and create new projects
+  await prisma.project.deleteMany({});
   for (const project of projects) {
-    await prisma.project.upsert({
-      where: { title: project.title },
-      update: {},
-      create: project
+    await prisma.project.create({
+      data: project
     });
   }
 

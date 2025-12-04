@@ -130,7 +130,7 @@ const Home = () => {
                   {project.description.substring(0, 120)}...
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologiesUsed.slice(0, 3).map((tech, index) => (
+                  {project.technologiesUsed.split(', ').slice(0, 3).map((tech, index) => (
                     <span 
                       key={index}
                       className="px-3 py-1 bg-blue-100 text-primary text-sm rounded-full"
