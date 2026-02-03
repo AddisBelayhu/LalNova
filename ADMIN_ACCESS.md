@@ -19,8 +19,8 @@ The admin dashboard is completely hidden from public users for security. Here's 
 3. **You'll be redirected to the admin login page**
 
 4. **Login with your admin credentials:**
-   - Email: `admin@lalnova.com` (or your configured email)
-   - Password: Your secure admin password
+   - Email: `vibrantteam@lalnova.com`
+   - Password: `novatech@2025`
 
 ### **Method 2: Direct Admin Login (if you know the URL)**
 
@@ -60,8 +60,8 @@ const SECRET_ACCESS_CODE = 'YOUR_NEW_SECRET_CODE';
 
 Update your `.env` file:
 ```env
-ADMIN_EMAIL=your-new-admin@email.com
-ADMIN_PASSWORD=your-new-secure-password
+ADMIN_EMAIL=vibrantteam@lalnova.com
+ADMIN_PASSWORD=novatech@2025
 ```
 
 ### **Add IP Whitelisting (Production):**
