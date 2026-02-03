@@ -166,7 +166,7 @@ const Projects = () => {
             {[
               { number: '98%', label: 'Client Satisfaction' },
               { number: '100%', label: 'On-Time Delivery' },
-              { number: '50+', label: 'Projects Completed' },
+              { number: '3+', label: 'Projects Completed' },
               { number: '24/7', label: 'Support Available' }
             ].map((stat, index) => (
               <div key={index} className="text-center">

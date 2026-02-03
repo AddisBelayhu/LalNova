@@ -21,11 +21,12 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <Phone size={16} />
-                <span>+1 (555) 123-4567</span>
+                <span>+251 (094) 710-1989 / +251 (094) 256-0505</span>
               </div>
               <div className="flex items-center space-x-2">
                 <MapPin size={16} />
-                <span>123 Tech Street, Innovation City, IC 12345</span>
+                <span>Addis Ababa, Laghar Area, Amhara Rehabilitation and Development Organization Building,
+                15nth floor, Bureau No. 15/c-32</span>
               </div>
             </div>
           </div>
@@ -70,6 +71,7 @@ const Footer = () => {
               <li>IT Consulting</li>
               <li>Cloud Solutions</li>
               <li>System Integration</li>
+              <li>Data Analysis</li>
               <li>Digital Transformation</li>
             </ul>
           </div>

@@ -3,6 +3,29 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
+const Logo = () => {
+  const [imageError, setImageError] = useState(false);
+
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
+  return (
+    <Link to="/" className="flex-shrink-0 flex items-center">
+      {!imageError ? (
+        <img
+          src="/images/logo/lalnova-logo.png"
+          alt="LalNova Technologies"
+          className="h-8 w-auto"
+          onError={handleImageError}
+        />
+      ) : (
+        <span className="text-2xl font-bold text-primary">LalNova</span>
+      )}
+    </Link>
+  );
+};
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
@@ -23,9 +46,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="flex-shrink-0">
-              <span className="text-2xl font-bold text-primary">LalNova</span>
-            </Link>
+            <Logo />
           </div>
 
           {/* Desktop Navigation */}
@@ -34,16 +55,15 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 to={item.href}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  isActive(item.href)
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive(item.href)
                     ? 'text-primary bg-blue-50'
                     : 'text-gray-700 hover:text-primary hover:bg-gray-50'
-                }`}
+                  }`}
               >
                 {item.name}
               </Link>
             ))}
-            
+
             {user ? (
               <div className="flex items-center space-x-4">
                 {user.role === 'ADMIN' && (
@@ -91,17 +111,16 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 to={item.href}
-                className={`block px-3 py-2 rounded-md text-base font-medium ${
-                  isActive(item.href)
+                className={`block px-3 py-2 rounded-md text-base font-medium ${isActive(item.href)
                     ? 'text-primary bg-blue-50'
                     : 'text-gray-700 hover:text-primary hover:bg-gray-50'
-                }`}
+                  }`}
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}
               </Link>
             ))}
-            
+
             {user ? (
               <>
                 {user.role === 'ADMIN' && (

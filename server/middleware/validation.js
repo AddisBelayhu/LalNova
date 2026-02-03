@@ -31,7 +31,7 @@ const schemas = {
     title: Joi.string().min(3).max(200).required(),
     description: Joi.string().min(10).max(1000).required(),
     icon: Joi.string().required(),
-    category: Joi.string().valid('SOFTWARE_DEV', 'CONSULTANCY', 'CLOUD', 'INTEGRATION').required()
+    category: Joi.string().min(1).required() // Allow any category string instead of fixed values
   }),
 
   project: Joi.object({

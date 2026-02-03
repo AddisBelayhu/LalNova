@@ -32,7 +32,7 @@ const AdminLogin = () => {
 
     try {
       const result = await login(formData.email, formData.password);
-      
+
       if (result.success) {
         toast.success('Login successful!');
         navigate('/admin/dashboard');
@@ -115,14 +115,9 @@ const AdminLogin = () => {
             </button>
           </form>
 
-          <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-            <p className="text-sm text-blue-800">
-              <strong>Demo Credentials:</strong><br />
-              Email: admin@lalnova.com<br />
-              Password: admin123
-            </p>
-          </div>
+         
         </div>
+        
       </div>
     </div>
   );

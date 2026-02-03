@@ -6,14 +6,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#1E40AF',
-        secondary: '#0F172A',
-        accent: '#38BDF8',
+        primary: '#2D9CDB',      // New teal color
+        secondary: '#0F172A',    // Keep dark slate
+        accent: '#1E88E5',       // Complementary blue
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }

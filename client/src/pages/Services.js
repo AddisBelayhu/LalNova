@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Code, Cloud, Settings, Users, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { getCategoryName, getCategoryColor } from '../utils/categories';
+import { sanitizeHtml } from '../utils/htmlUtils';
+import '../styles/richtext.css';
 
 const Services = () => {
   const [services, setServices] = useState([]);
@@ -30,26 +33,6 @@ const Services = () => {
       consulting: <Users size={64} />
     };
     return icons[iconName] || <Code size={64} />;
-  };
-
-  const getCategoryColor = (category) => {
-    const colors = {
-      SOFTWARE_DEV: 'bg-blue-100 text-blue-800',
-      CONSULTANCY: 'bg-green-100 text-green-800',
-      CLOUD: 'bg-purple-100 text-purple-800',
-      INTEGRATION: 'bg-orange-100 text-orange-800'
-    };
-    return colors[category] || 'bg-gray-100 text-gray-800';
-  };
-
-  const getCategoryName = (category) => {
-    const names = {
-      SOFTWARE_DEV: 'Software Development',
-      CONSULTANCY: 'IT Consulting',
-      CLOUD: 'Cloud Solutions',
-      INTEGRATION: 'System Integration'
-    };
-    return names[category] || category;
   };
 
   if (loading) {
@@ -107,9 +90,10 @@ const Services = () => {
                         {getCategoryName(service.category)}
                       </span>
                     </div>
-                    <p className="text-gray-600 mb-4 leading-relaxed">
-                      {service.description}
-                    </p>
+                    <div 
+                      className="text-gray-600 mb-4 leading-relaxed rich-text-content"
+                      dangerouslySetInnerHTML={{ __html: sanitizeHtml(service.description) }}
+                    />
                     <Link 
                       to="/contact" 
                       className="text-primary hover:text-blue-700 font-medium inline-flex items-center group-hover:translate-x-1 transition-transform"

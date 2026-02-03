@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Code, Cloud, Settings, Users } from 'lucide-react';
 import axios from 'axios';
+import { getCategoryName, getCategoryColor } from '../utils/categories';
+import { getPreviewText, sanitizeHtml } from '../utils/htmlUtils';
+import '../styles/richtext.css';
 
 const Home = () => {
   const [services, setServices] = useState([]);
@@ -49,9 +52,9 @@ const Home = () => {
             Building Modern Solutions for a{' '}
             <span className="text-accent">Smarter Future</span>
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
-            We specialize in software development, IT consulting, system integration, 
-            cloud solutions, and digital transformation advisory.
+          <p className="text-lg md:text-xl mb-8 text-blue-100 max-w-3xl mx-auto">
+            We specialize in software development, IT Consulting, system Development,
+            Data Collection, and Networking Solutions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/services" className="btn-primary bg-accent hover:bg-sky-500">
@@ -83,14 +86,26 @@ const Home = () => {
                 <div className="text-primary mb-4 flex justify-center">
                   {getServiceIcon(service.icon)}
                 </div>
+                <div className="mb-3">
+                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${getCategoryColor(service.category)}`}>
+                    {getCategoryName(service.category)}
+                  </span>
+                </div>
                 <h3 className="text-xl font-semibold mb-3 text-secondary">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 mb-4">
-                  {service.description.substring(0, 100)}...
-                </p>
-                <Link 
-                  to="/services" 
+                <div 
+                  className="text-gray-600 mb-4 rich-text-content text-sm"
+                  dangerouslySetInnerHTML={{ __html: sanitizeHtml(service.description) }}
+                  style={{
+                    display: '-webkit-box',
+                    WebkitLineClamp: 3,
+                    WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden'
+                  }}
+                />
+                <Link
+                  to="/services"
                   className="text-primary hover:text-blue-700 font-medium inline-flex items-center"
                 >
                   Learn More <ArrowRight className="ml-1" size={16} />
@@ -117,8 +132,8 @@ const Home = () => {
             {projects.map((project) => (
               <div key={project.id} className="card hover:scale-105">
                 {project.imageUrl && (
-                  <img 
-                    src={project.imageUrl} 
+                  <img
+                    src={project.imageUrl}
                     alt={project.title}
                     className="w-full h-48 object-cover rounded-lg mb-4"
                   />
@@ -131,7 +146,7 @@ const Home = () => {
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologiesUsed.split(', ').slice(0, 3).map((tech, index) => (
-                    <span 
+                    <span
                       key={index}
                       className="px-3 py-1 bg-blue-100 text-primary text-sm rounded-full"
                     >
@@ -139,8 +154,8 @@ const Home = () => {
                     </span>
                   ))}
                 </div>
-                <Link 
-                  to="/projects" 
+                <Link
+                  to="/projects"
                   className="text-primary hover:text-blue-700 font-medium inline-flex items-center"
                 >
                   View Details <ArrowRight className="ml-1" size={16} />

@@ -107,7 +107,7 @@ const Contact = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                    placeholder="+1 (555) 123-4567"
+                    placeholder="+251 (094) 256-0505"
                   />
                 </div>
 
@@ -175,8 +175,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-secondary mb-1">Phone</h3>
-                    <p className="text-gray-600">+1 (555) 123-4567</p>
-                    <p className="text-gray-600">+1 (555) 987-6543</p>
+                    <p className="text-gray-600">+251 (092) 244-5766</p>
+                    <p className="text-gray-600">+251 (094) 256-0505</p>
                   </div>
                 </div>
 
@@ -187,9 +187,9 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold text-secondary mb-1">Address</h3>
                     <p className="text-gray-600">
-                      123 Tech Street<br />
-                      Innovation City, IC 12345<br />
-                      United States
+                      Addis Ababa, Laghar Area, Amhara Rehabilitation and Development Organization Building,<br />
+                      15nth floor, Bureau No. 15/c-32<br />
+                      Ethiopia
                     </p>
                   </div>
                 </div>
@@ -205,7 +205,7 @@ const Contact = () => {
                   </div>
                   <div className="flex justify-between">
                     <span>Saturday</span>
-                    <span>10:00 AM - 4:00 PM</span>
+                    <span>9:00 AM - 5:00 PM</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Sunday</span>

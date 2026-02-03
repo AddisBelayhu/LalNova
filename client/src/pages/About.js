@@ -1,39 +1,85 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Target, Eye, Users, Award } from 'lucide-react';
+
+const TeamMemberImage = ({ src, fallbackSrc, alt, className }) => {
+  const [imgSrc, setImgSrc] = useState(src);
+  const [hasError, setHasError] = useState(false);
+
+  const handleError = () => {
+    if (!hasError) {
+      setHasError(true);
+      setImgSrc(fallbackSrc);
+    }
+  };
+
+  return (
+    <img
+      src={imgSrc}
+      alt={alt}
+      className={className}
+      onError={handleError}
+    />
+  );
+};
+
+const CompanyImage = ({ src, fallbackSrc, alt, className }) => {
+  const [imgSrc, setImgSrc] = useState(src);
+  const [hasError, setHasError] = useState(false);
+
+  const handleError = () => {
+    if (!hasError) {
+      setHasError(true);
+      setImgSrc(fallbackSrc);
+    }
+  };
+
+  return (
+    <img
+      src={imgSrc}
+      alt={alt}
+      className={className}
+      onError={handleError}
+    />
+  );
+};
 
 const About = () => {
   const team = [
     {
-      name: 'John Smith',
+      name: 'Kindie Asmamaw',
       role: 'CEO & Founder',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face',
+      image: '/images/team/kindie-asmamaw.jpg',
+      fallbackImage: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face',
       bio: '15+ years in technology leadership and business strategy.'
     },
     {
-      name: 'Sarah Johnson',
+      name: 'Gebre Alamne',
       role: 'CTO',
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face',
+      image: '/images/team/gebre-alamne.jpg',
+      fallbackImage: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face',
       bio: 'Expert in cloud architecture and software development.'
     },
     {
-      name: 'Michael Chen',
+      name: 'Addis Belayhun',
       role: 'Lead Developer',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face',
+      image: '/images/team/addis-belayhun.jpg',
+      fallbackImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face',
       bio: 'Full-stack developer with expertise in modern frameworks.'
     },
     {
-      name: 'Emily Davis',
+      name: 'Simamlak Admasu',
       role: 'Project Manager',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face',
+      image: '/images/team/simamlak-admasu.jpg',
+      fallbackImage: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face',
       bio: 'Agile methodology expert ensuring project success.'
     }
   ];
 
   const stats = [
-    { number: '50+', label: 'Projects Completed' },
-    { number: '25+', label: 'Happy Clients' },
-    { number: '5+', label: 'Years Experience' },
-    { number: '10+', label: 'Team Members' }
+    { number: '3+', label: 'Projects Completed' },
+    { number: '3+', label: 'Happy Clients' },
+    { number: '1', label: 'Years Experience' },
+    { number: '8+', label: 'Team Members' }
   ];
 
   return (
@@ -45,7 +91,7 @@ const About = () => {
             About LalNova Technologies
           </h1>
           <p className="text-xl text-blue-100">
-            We are a forward-thinking technology company dedicated to delivering 
+            We are a forward-thinking technology company dedicated to delivering
             innovative solutions that drive business growth and digital transformation.
           </p>
         </div>
@@ -58,27 +104,28 @@ const About = () => {
             <div>
               <h2 className="text-3xl font-bold text-secondary mb-6">Our Story</h2>
               <p className="text-gray-600 mb-4">
-                Founded in 2025, LalNova Technologies emerged from a vision to bridge 
-                the gap between cutting-edge technology and practical business solutions. 
-                Our journey began with a small team of passionate developers and has 
+                Founded in 2025, LalNova Technologies emerged from a vision to bridge
+                the gap between cutting-edge technology and practical business solutions.
+                Our journey began with a small team of passionate developers and has
                 grown into a comprehensive technology partner for businesses worldwide.
               </p>
               <p className="text-gray-600 mb-4">
-                We believe that technology should empower businesses, not complicate them. 
-                This philosophy drives everything we do, from our initial consultation 
+                We believe that technology should empower businesses, not complicate them.
+                This philosophy drives everything we do, from our initial consultation
                 to the final deployment of your solution.
               </p>
               <p className="text-gray-600">
-                Today, we continue to innovate and adapt, staying ahead of technology 
-                trends to provide our clients with solutions that not only meet their 
+                Today, we continue to innovate and adapt, staying ahead of technology
+                trends to provide our clients with solutions that not only meet their
                 current needs but also prepare them for future challenges.
               </p>
             </div>
             <div>
-              <img 
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop" 
+              <CompanyImage
+                src="/images/company/team-collaboration.jpg"
+                fallbackSrc="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop"
                 alt="Team collaboration"
-                className="rounded-xl shadow-lg"
+                className="rounded-xl shadow-lg max-h-80 w-full object-cover"
               />
             </div>
           </div>
@@ -95,7 +142,7 @@ const About = () => {
               </div>
               <h3 className="text-2xl font-bold text-secondary mb-4">Our Mission</h3>
               <p className="text-gray-600">
-                To empower businesses with innovative technology solutions that drive 
+                To empower businesses with innovative technology solutions that drive
                 growth, efficiency, and competitive advantage in the digital age.
               </p>
             </div>
@@ -105,7 +152,7 @@ const About = () => {
               </div>
               <h3 className="text-2xl font-bold text-secondary mb-4">Our Vision</h3>
               <p className="text-gray-600">
-                To be the leading technology partner that transforms businesses 
+                To be the leading technology partner that transforms businesses
                 through intelligent solutions and exceptional service delivery.
               </p>
             </div>
@@ -145,8 +192,9 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {team.map((member, index) => (
               <div key={index} className="card text-center">
-                <img 
-                  src={member.image} 
+                <TeamMemberImage
+                  src={member.image}
+                  fallbackSrc={member.fallbackImage}
                   alt={member.name}
                   className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
                 />
@@ -177,7 +225,7 @@ const About = () => {
               </div>
               <h3 className="text-xl font-semibold text-secondary mb-3">Excellence</h3>
               <p className="text-gray-600">
-                We strive for excellence in every project, delivering solutions 
+                We strive for excellence in every project, delivering solutions
                 that exceed expectations and drive real business value.
               </p>
             </div>
@@ -187,7 +235,7 @@ const About = () => {
               </div>
               <h3 className="text-xl font-semibold text-secondary mb-3">Collaboration</h3>
               <p className="text-gray-600">
-                We believe in the power of collaboration, working closely with 
+                We believe in the power of collaboration, working closely with
                 our clients to understand their needs and deliver tailored solutions.
               </p>
             </div>
@@ -197,7 +245,7 @@ const About = () => {
               </div>
               <h3 className="text-xl font-semibold text-secondary mb-3">Innovation</h3>
               <p className="text-gray-600">
-                We embrace innovation and stay at the forefront of technology 
+                We embrace innovation and stay at the forefront of technology
                 to provide cutting-edge solutions for our clients.
               </p>
             </div>
