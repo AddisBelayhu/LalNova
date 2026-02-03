@@ -41,6 +41,9 @@ const Navbar = () => {
 
   const isActive = (path) => location.pathname === path;
 
+  // Hide admin links completely from public users
+  const showAdminLinks = user && user.role === 'ADMIN';
+
   return (
     <nav className="bg-white shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,16 +67,15 @@ const Navbar = () => {
               </Link>
             ))}
 
-            {user ? (
+            {/* Only show admin links if user is logged in as admin */}
+            {showAdminLinks && (
               <div className="flex items-center space-x-4">
-                {user.role === 'ADMIN' && (
-                  <Link
-                    to="/admin/dashboard"
-                    className="text-sm font-medium text-primary hover:text-blue-700"
-                  >
-                    Dashboard
-                  </Link>
-                )}
+                <Link
+                  to="/admin/dashboard"
+                  className="text-sm font-medium text-primary hover:text-blue-700"
+                >
+                  Dashboard
+                </Link>
                 <button
                   onClick={logout}
                   className="text-sm font-medium text-gray-700 hover:text-primary"
@@ -81,13 +83,6 @@ const Navbar = () => {
                   Logout
                 </button>
               </div>
-            ) : (
-              <Link
-                to="/admin/login"
-                className="text-sm font-medium text-primary hover:text-blue-700"
-              >
-                Admin
-              </Link>
             )}
           </div>
 
@@ -121,17 +116,16 @@ const Navbar = () => {
               </Link>
             ))}
 
-            {user ? (
+            {/* Only show admin links if user is logged in as admin */}
+            {showAdminLinks && (
               <>
-                {user.role === 'ADMIN' && (
-                  <Link
-                    to="/admin/dashboard"
-                    className="block px-3 py-2 text-base font-medium text-primary hover:text-blue-700"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Dashboard
-                  </Link>
-                )}
+                <Link
+                  to="/admin/dashboard"
+                  className="block px-3 py-2 text-base font-medium text-primary hover:text-blue-700"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Dashboard
+                </Link>
                 <button
                   onClick={() => {
                     logout();
@@ -142,14 +136,6 @@ const Navbar = () => {
                   Logout
                 </button>
               </>
-            ) : (
-              <Link
-                to="/admin/login"
-                className="block px-3 py-2 text-base font-medium text-primary hover:text-blue-700"
-                onClick={() => setIsOpen(false)}
-              >
-                Admin
-              </Link>
             )}
           </div>
         </div>

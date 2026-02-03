@@ -10,6 +10,20 @@ const prisma = new PrismaClient();
 router.use(authenticateToken);
 router.use(requireAdmin);
 
+// Add additional IP-based protection for production (optional)
+const adminIPWhitelist = process.env.ADMIN_IP_WHITELIST ? 
+  process.env.ADMIN_IP_WHITELIST.split(',') : [];
+
+if (process.env.NODE_ENV === 'production' && adminIPWhitelist.length > 0) {
+  router.use((req, res, next) => {
+    const clientIP = req.ip || req.connection.remoteAddress || req.socket.remoteAddress;
+    if (!adminIPWhitelist.includes(clientIP)) {
+      return res.status(403).json({ error: 'Access denied from this IP address' });
+    }
+    next();
+  });
+}
+
 // Services CRUD
 router.get('/services', async (req, res) => {
   try {

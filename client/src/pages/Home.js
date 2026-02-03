@@ -57,10 +57,7 @@ const Home = () => {
             Data Collection, and Networking Solutions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/services" className="btn-primary bg-accent hover:bg-sky-500">
-              Our Services
-              <ArrowRight className="ml-2 inline" size={20} />
-            </Link>
+                     
             <Link to="/contact" className="btn-secondary border-white text-white hover:bg-white hover:text-primary">
               Get Started
             </Link>
