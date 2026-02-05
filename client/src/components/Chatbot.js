@@ -7,7 +7,7 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: "Hello, Welcome to LalNova Technologies! What can I help you with today?",
+      text: "🎉 Hello and welcome to LalNova Technologies! I'm LalBot, your personal tech assistant. I'm excited to help you discover how we can transform your business with cutting-edge technology solutions. What brings you here today?",
       sender: 'bot',
       timestamp: new Date()
     }
@@ -18,7 +18,7 @@ const Chatbot = () => {
   const [showSpellCheck, setShowSpellCheck] = useState(false);
   const messagesEndRef = useRef(null);
 
-  // Auto-open chatbot on website load
+  // Auto-open chatbot on website load after 10 seconds
   useEffect(() => {
     // Check if chatbot has already auto-opened in this session
     const hasOpened = sessionStorage.getItem('chatbotAutoOpened') || localStorage.getItem('chatbotAutoOpened');
@@ -45,16 +45,18 @@ const Chatbot = () => {
       }
     };
 
-    // Multiple timing approaches for different browsers
-    const timer1 = setTimeout(autoOpenChatbot, 1000);
+    // Set 10-second delay for chatbot auto-open
+    const timer1 = setTimeout(autoOpenChatbot, 10000); // 10 seconds
+    
+    // Backup timer with requestAnimationFrame for better browser support
     const timer2 = requestAnimationFrame(() => {
-      setTimeout(autoOpenChatbot, 100);
+      setTimeout(autoOpenChatbot, 10000); // 10 seconds
     });
 
     // Also try on page visibility change (for browsers that delay timers)
     const handleVisibilityChange = () => {
       if (!document.hidden && !hasAutoOpened) {
-        setTimeout(autoOpenChatbot, 200);
+        setTimeout(autoOpenChatbot, 10000); // 10 seconds
       }
     };
 
@@ -62,7 +64,7 @@ const Chatbot = () => {
     document.addEventListener('visibilitychange', handleVisibilityChange);
     window.addEventListener('focus', () => {
       if (!hasAutoOpened) {
-        setTimeout(autoOpenChatbot, 100);
+        setTimeout(autoOpenChatbot, 10000); // 10 seconds
       }
     });
 
@@ -226,45 +228,53 @@ const Chatbot = () => {
 
   const predefinedResponses = {
     greeting: [
-      'hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening'
+      'hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening', 'greetings', 'howdy', 'welcome'
     ],
     services: [
-      'services', 'what do you do', 'what services', 'offerings', 'solutions', 'development time'
+      'services', 'what do you do', 'what services', 'offerings', 'solutions', 'capabilities', 'expertise', 'specialties', 'what can you help with'
     ],
     contact: [
-      'contact', 'phone', 'email', 'address', 'reach', 'get in touch'
+      'contact', 'phone', 'email', 'address', 'reach', 'get in touch', 'call', 'location', 'office', 'how to reach'
     ],
     pricing: [
-      'price', 'cost', 'pricing', 'quote', 'estimate', 'budget'
+      'price', 'cost', 'pricing', 'quote', 'estimate', 'budget', 'rates', 'fees', 'how much', 'expensive', 'affordable'
     ],
     about: [
-      'about', 'company', 'who are you', 'team', 'history'
+      'about', 'company', 'who are you', 'team', 'history', 'background', 'founded', 'story', 'mission', 'vision'
     ],
     projects: [
-      'projects', 'portfolio', 'work', 'examples', 'case studies'
+      'projects', 'portfolio', 'work', 'examples', 'case studies', 'clients', 'experience', 'past work', 'showcase'
     ],
     development_time: [
-      'bellow three months', 'between 3 to 6 months', 'more than 6 months', 'more than a year', 'it nees further discussion'
+      'time', 'timeline', 'duration', 'how long', 'development time', 'delivery', 'schedule', 'when', 'deadline', 'completion'
     ]
-
   };
 
   const responses = {
-    greeting: "Hello! Welcome to LalNova Technologies. We're here to help you with your technology needs. What would you like to know about our services?",
-    services: "We offer comprehensive technology solutions including:\n• Custom Software Development\n• IT Consulting\n• Cloud Solutions\n• System Integration\n• Digital Transformation\n\nWould you like to know more about any specific service?",
-    contact: "You can reach us at:\n📧 Email: info@lalnova.com\n📞 Phone: +1 (555) 123-4567\n📍 Address: 123 Tech Street, Innovation City\n\nOr you can fill out our contact form and we'll get back to you within 24 hours!",
-    pricing: "Our pricing varies based on project scope and requirements. We offer competitive rates and flexible packages. Would you like to schedule a free consultation to discuss your specific needs and get a custom quote?",
-    about: "LalNova Technologies is a forward-thinking tech company founded in 2025. We specialize in building modern solutions for businesses. Our team of experts is dedicated to delivering innovative technology solutions that drive growth and digital transformation.",
-    projects: "We've successfully completed 50+ projects across various industries. Our portfolio includes e-commerce platforms, healthcare management systems, and financial analytics dashboards. Visit our Projects page to see our latest work!",
-    development_time: "complicated systems take morethan 6 monthes, medium ones take 3 to 6 monthes and siple website take up to 4 weeks",
-    default: "I understand you're asking about that topic. For detailed information, I'd recommend:\n• Browsing our website sections\n• Contacting our team directly\n• Scheduling a consultation\n\nIs there anything specific about our services I can help you with?"
+    greeting: "🎉 Hello and welcome to LalNova Technologies! I'm LalBot, your personal tech assistant. I'm excited to help you discover how we can transform your business with cutting-edge technology solutions. What brings you here today? Let's start building something amazing together!",
+    
+    services: "🚀 Fantastic question! We're passionate about delivering game-changing technology solutions:\n\n💻 **Custom Software Development** - Tailored applications that perfectly fit your business\n🎯 **IT Consulting** - Strategic guidance to optimize your technology investments\n☁️ **Cloud Solutions** - Scalable, secure cloud infrastructure for modern businesses\n🔗 **System Integration** - Seamlessly connecting your existing systems\n✨ **Digital Transformation** - Complete modernization of your business processes\n\nWhich of these exciting services caught your attention? I'd love to dive deeper into how we can help you succeed!",
+    
+    contact: "📞 I'm thrilled you want to connect with our amazing team! Here's how you can reach us:\n\n📧 **Email:** info@lalnova.com - We respond within 2 hours!\n📱 **Phone:** +251 (942) 560-0505 - Call us anytime!\n🏢 **Visit Us:** Addis Ababa, Laghar Area, Amhara Rehabilitation Building, 15th floor, Bureau 15/c-32\n\n💡 **Pro Tip:** Fill out our contact form for priority response - we guarantee a reply within 24 hours! Ready to take the next step? Let's make it happen!",
+    
+    pricing: "💰 Great news! We believe in transparent, value-driven pricing that fits your budget. Our competitive rates are designed to maximize your ROI:\n\n✅ **Flexible packages** tailored to your needs\n✅ **No hidden fees** - what you see is what you get\n✅ **Payment plans** available for larger projects\n✅ **FREE consultation** to discuss your vision\n\n🎯 Want a custom quote? Let's schedule a complimentary strategy session where we'll analyze your needs and provide a detailed proposal. Ready to invest in your success?",
+    
+    about: "🌟 Welcome to the LalNova story! We're not just another tech company - we're innovation pioneers founded in 2025 with a bold mission:\n\n🎯 **Our Vision:** Building modern solutions for a smarter future\n👥 **Our Team:** Passionate experts who live and breathe technology\n🚀 **Our Promise:** Delivering solutions that drive real business growth\n💡 **Our Approach:** Combining cutting-edge tech with human-centered design\n\nWe're not just building software - we're crafting digital experiences that transform businesses and delight users. Want to be part of our success story?",
+    
+    projects: "🏆 We're incredibly proud of our track record! With 50+ successful projects delivered, we've helped businesses across industries achieve remarkable results:\n\n🛒 **E-commerce Platforms** - Boosting online sales by 300%\n🏥 **Healthcare Systems** - Streamlining patient care and reducing costs\n📊 **Financial Dashboards** - Providing real-time insights for better decisions\n🏭 **Enterprise Solutions** - Automating processes and increasing efficiency\n\n✨ Each project tells a unique success story. Visit our Projects page to see the amazing transformations we've created! Which industry interests you most?",
+    
+    development_time: "⏰ Excellent question! We believe in setting realistic expectations and delivering on time, every time:\n\n🚀 **Simple Websites:** 2-4 weeks - Perfect for getting started quickly!\n⚙️ **Medium Complexity:** 3-6 months - Robust solutions with advanced features\n🏗️ **Enterprise Systems:** 6+ months - Comprehensive platforms that scale with your business\n\n💡 **The LalNova Advantage:** We use agile methodology with regular updates, so you see progress every step of the way! Plus, we always include buffer time to ensure quality. Ready to discuss your timeline?",
+    
+    default: "🤔 That's an interesting question! While I don't have specific information about that topic right now, I'm here to help you find the answers you need:\n\n💡 **Here's what I recommend:**\n• 🌐 Explore our comprehensive website sections\n• 📞 Connect directly with our expert team\n• 📅 Schedule a free consultation for personalized guidance\n• 💬 Ask me about our core services - I'm full of insights!\n\n🎯 Is there anything specific about our technology solutions, pricing, or process that I can help clarify? I'm here to make your journey with LalNova as smooth as possible!"
   };
 
   const quickReplies = [
-    "Our Services",
-    "Contact Info",
-    "Get Quote",
-    "View Projects"
+    "🚀 Our Services",
+    "📞 Contact Info", 
+    "💰 Get Quote",
+    "🏆 View Projects",
+    "⏰ Development Time",
+    "🌟 About Us"
   ];
 
   const getBotResponse = (userMessage) => {
@@ -334,8 +344,8 @@ const Chatbot = () => {
           <div className="bg-primary text-white p-4 rounded-t-xl flex items-center">
             <Bot className="mr-2" size={20} />
             <div>
-              <h3 className="font-semibold">LalBot</h3>
-              <p className="text-xs opacity-90">Online • Typically replies instantly</p>
+              <h3 className="font-semibold">🤖 LalBot - Your Tech Assistant</h3>
+              <p className="text-xs opacity-90">🟢 Online • Ready to help you succeed!</p>
             </div>
           </div>
 
@@ -386,22 +396,23 @@ const Chatbot = () => {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Quick Replies */}
-          {messages.length <= 2 && (
-            <div className="px-4 pb-2">
-              <div className="flex flex-wrap gap-2">
-                {quickReplies.map((reply, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleQuickReply(reply)}
-                    className="px-3 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs rounded-full transition-colors"
-                  >
-                    {reply}
-                  </button>
-                ))}
-              </div>
+          {/* Quick Replies - Always show after bot responses */}
+          <div className="px-4 pb-2">
+            <div className="flex flex-wrap gap-2">
+              {quickReplies.map((reply, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleQuickReply(reply)}
+                  className="px-3 py-1 bg-gray-100 hover:bg-primary hover:text-white text-gray-700 text-xs rounded-full transition-all duration-200 transform hover:scale-105"
+                >
+                  {reply}
+                </button>
+              ))}
             </div>
-          )}
+            <div className="mt-2 text-center">
+              <p className="text-xs text-gray-500">👆 Click any topic above for instant help!</p>
+            </div>
+          </div>
 
           {/* Input */}
           <div className="p-4 border-t">

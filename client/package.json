@@ -1,6 +1,8 @@
 {
-  "name": "lalnova-client",
-  "version": "0.1.0",
+  "name": "lalnova-technologies-client",
+  "version": "1.0.0",
+  "description": "LalNova Technologies - Modern IT Solutions Client Application",
+  "homepage": "https://lalnova.com",
   "private": true,
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",
