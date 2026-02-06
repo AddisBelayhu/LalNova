@@ -44,10 +44,10 @@ const Projects = () => {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary to-blue-800 text-white section-padding">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <h1 className="text-3xl md:text-4xl font-bold mb-6">
             LalNova's Portfolio
           </h1>
-          <p className="text-xl text-blue-100">
+          <p className="text-base md:text-lg text-blue-100">
             Explore our latest projects and see how we've helped businesses 
             transform their operations with innovative technology solutions.
           </p>
@@ -58,7 +58,7 @@ const Projects = () => {
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-secondary mb-4">
+            <h2 className="text-2xl font-bold text-secondary mb-4">
               Featured Projects
             </h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
@@ -131,7 +131,7 @@ const Projects = () => {
       <section className="section-padding bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-secondary mb-4">
+            <h2 className="text-2xl font-bold text-secondary mb-4">
               Technologies We Use
             </h2>
             <p className="text-gray-600 text-lg">
@@ -183,7 +183,7 @@ const Projects = () => {
       {/* CTA Section */}
       <section className="section-padding bg-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-secondary mb-6">
             Have a Project in Mind?
           </h2>
           <p className="text-xl text-gray-600 mb-8">

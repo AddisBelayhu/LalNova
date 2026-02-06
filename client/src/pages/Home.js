@@ -48,13 +48,13 @@ const Home = () => {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary to-blue-800 text-white section-padding">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+          <h1 className="text-3xl md:text-4xl font-bold mb-6">
             Building Modern Solutions for a{' '}
             <span className="text-accent">Smarter Future</span>
           </h1>
-          <p className="text-lg md:text-xl mb-8 text-blue-100 max-w-3xl mx-auto">
-            We specialize in software development, IT Consulting, system Development,
-            Data Collection, and Networking Solutions.
+          <p className="text-base md:text-lg mb-8 text-blue-100 max-w-3xl mx-auto">
+            We specialize in software development, IT Consulting, Training,
+            Data Analytics, and Networking Solutions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
                      
@@ -69,7 +69,7 @@ const Home = () => {
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-secondary mb-4">
               Our Core Services
             </h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
@@ -88,7 +88,7 @@ const Home = () => {
                     {getCategoryName(service.category)}
                   </span>
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-secondary">
+                <h3 className="text-lg font-semibold mb-3 text-secondary">
                   {service.title}
                 </h3>
                 <div 
@@ -117,7 +117,7 @@ const Home = () => {
       <section className="section-padding bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-secondary mb-4">
               Featured Projects
             </h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">

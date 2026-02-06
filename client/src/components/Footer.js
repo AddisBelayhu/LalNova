@@ -11,7 +11,7 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-2">
             <h3 className="text-2xl font-bold mb-4">LalNova Technologies</h3>
             <p className="text-gray-300 mb-4">
-              Building modern solutions for a smarter future. We specialize in software development, 
+              Building modern solutions for a smarter future. We specialize in software development,
               IT consulting, system integration, and cloud solutions.
             </p>
             <div className="space-y-2">
@@ -26,7 +26,7 @@ const Footer = () => {
               <div className="flex items-center space-x-2">
                 <MapPin size={16} />
                 <span>Addis Ababa, Laghar Area, Amhara Rehabilitation and Development Organization Building,
-                15nth floor, Bureau No. 15/c-32</span>
+                  15nth floor, Bureau No. 15/c-32</span>
               </div>
             </div>
           </div>

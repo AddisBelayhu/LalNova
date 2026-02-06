@@ -45,18 +45,18 @@ const Chatbot = () => {
       }
     };
 
-    // Set 10-second delay for chatbot auto-open
-    const timer1 = setTimeout(autoOpenChatbot, 10000); // 10 seconds
+    // Set 5-second delay for chatbot auto-open
+    const timer1 = setTimeout(autoOpenChatbot, 5000); // 5 seconds
     
     // Backup timer with requestAnimationFrame for better browser support
     const timer2 = requestAnimationFrame(() => {
-      setTimeout(autoOpenChatbot, 10000); // 10 seconds
+      setTimeout(autoOpenChatbot, 5000); // 5 seconds
     });
 
     // Also try on page visibility change (for browsers that delay timers)
     const handleVisibilityChange = () => {
       if (!document.hidden && !hasAutoOpened) {
-        setTimeout(autoOpenChatbot, 10000); // 10 seconds
+        setTimeout(autoOpenChatbot, 5000); // 5 seconds
       }
     };
 
@@ -64,7 +64,7 @@ const Chatbot = () => {
     document.addEventListener('visibilitychange', handleVisibilityChange);
     window.addEventListener('focus', () => {
       if (!hasAutoOpened) {
-        setTimeout(autoOpenChatbot, 10000); // 10 seconds
+        setTimeout(autoOpenChatbot, 5000); // 5 seconds
       }
     });
 
@@ -261,7 +261,7 @@ const Chatbot = () => {
     
     about: "🌟 Welcome to the LalNova story! We're not just another tech company - we're innovation pioneers founded in 2025 with a bold mission:\n\n🎯 **Our Vision:** Building modern solutions for a smarter future\n👥 **Our Team:** Passionate experts who live and breathe technology\n🚀 **Our Promise:** Delivering solutions that drive real business growth\n💡 **Our Approach:** Combining cutting-edge tech with human-centered design\n\nWe're not just building software - we're crafting digital experiences that transform businesses and delight users. Want to be part of our success story?",
     
-    projects: "🏆 We're incredibly proud of our track record! With 50+ successful projects delivered, we've helped businesses across industries achieve remarkable results:\n\n🛒 **E-commerce Platforms** - Boosting online sales by 300%\n🏥 **Healthcare Systems** - Streamlining patient care and reducing costs\n📊 **Financial Dashboards** - Providing real-time insights for better decisions\n🏭 **Enterprise Solutions** - Automating processes and increasing efficiency\n\n✨ Each project tells a unique success story. Visit our Projects page to see the amazing transformations we've created! Which industry interests you most?",
+    projects: "🏆 We're incredibly proud of our track record! With 3+ successful projects delivered with in a year, we've helped businesses across industries achieve remarkable results:\n\n🛒 **E-commerce Platforms** - Boosting online sales by 300%\n🏥 **Healthcare Systems** - Streamlining patient care and reducing costs\n📊 **Financial Dashboards** - Providing real-time insights for better decisions\n🏭 **Enterprise Solutions** - Automating processes and increasing efficiency\n\n✨ Each project tells a unique success story. Visit our Projects page to see the amazing transformations we've created! Which industry interests you most?",
     
     development_time: "⏰ Excellent question! We believe in setting realistic expectations and delivering on time, every time:\n\n🚀 **Simple Websites:** 2-4 weeks - Perfect for getting started quickly!\n⚙️ **Medium Complexity:** 3-6 months - Robust solutions with advanced features\n🏗️ **Enterprise Systems:** 6+ months - Comprehensive platforms that scale with your business\n\n💡 **The LalNova Advantage:** We use agile methodology with regular updates, so you see progress every step of the way! Plus, we always include buffer time to ensure quality. Ready to discuss your timeline?",
     
@@ -339,7 +339,7 @@ const Chatbot = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 w-80 h-96 bg-white rounded-xl shadow-2xl z-40 flex flex-col">
+        <div className="fixed bottom-24 right-6 w-80 h-[500px] bg-white rounded-xl shadow-2xl z-40 flex flex-col">
           {/* Header */}
           <div className="bg-primary text-white p-4 rounded-t-xl flex items-center">
             <Bot className="mr-2" size={20} />

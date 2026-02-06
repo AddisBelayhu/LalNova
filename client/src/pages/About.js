@@ -87,10 +87,10 @@ const About = () => {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary to-blue-800 text-white section-padding">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <h1 className="text-3xl md:text-4xl font-bold mb-6">
             About LalNova Technologies
           </h1>
-          <p className="text-xl text-blue-100">
+          <p className="text-base md:text-lg text-blue-100">
             We are a forward-thinking technology company dedicated to delivering
             innovative solutions that drive business growth and digital transformation.
           </p>
@@ -102,7 +102,7 @@ const About = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-secondary mb-6">Our Story</h2>
+              <h2 className="text-2xl font-bold text-secondary mb-6">Our Story</h2>
               <p className="text-gray-600 mb-4">
                 Founded in 2025, LalNova Technologies emerged from a vision to bridge
                 the gap between cutting-edge technology and practical business solutions.
@@ -184,7 +184,7 @@ const About = () => {
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-secondary mb-4">Meet Our Team</h2>
+            <h2 className="text-2xl font-bold text-secondary mb-4">Meet Our Team</h2>
             <p className="text-gray-600 text-lg">
               The talented individuals behind our success
             </p>
@@ -213,7 +213,7 @@ const About = () => {
       <section className="section-padding bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-secondary mb-4">Our Values</h2>
+            <h2 className="text-2xl font-bold text-secondary mb-4">Our Values</h2>
             <p className="text-gray-600 text-lg">
               The principles that guide our work and relationships
             </p>

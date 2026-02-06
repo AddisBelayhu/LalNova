@@ -5,6 +5,7 @@ import { AuthProvider } from './context/AuthContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Chatbot from './components/Chatbot';
+import SocialMediaLinks from './components/SocialMediaLinks';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -43,6 +44,7 @@ function App() {
             </Routes>
           </main>
           <Footer />
+          <SocialMediaLinks />
           <Chatbot />
           <Toaster position="top-right" />
         </div>

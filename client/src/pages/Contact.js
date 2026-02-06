@@ -40,10 +40,10 @@ const Contact = () => {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary to-blue-800 text-white section-padding">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <h1 className="text-3xl md:text-4xl font-bold mb-6">
             Get In Touch
           </h1>
-          <p className="text-xl text-blue-100">
+          <p className="text-base md:text-lg text-blue-100">
             Ready to start your next project? We'd love to hear from you. 
             Let's discuss how we can help transform your business.
           </p>
@@ -56,7 +56,7 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div>
-              <h2 className="text-3xl font-bold text-secondary mb-6">
+              <h2 className="text-2xl font-bold text-secondary mb-6">
                 Send Us a Message
               </h2>
               <p className="text-gray-600 mb-8">
@@ -149,7 +149,7 @@ const Contact = () => {
 
             {/* Contact Information */}
             <div>
-              <h2 className="text-3xl font-bold text-secondary mb-6">
+              <h2 className="text-2xl font-bold text-secondary mb-6">
                 Contact Information
               </h2>
               <p className="text-gray-600 mb-8">
@@ -222,7 +222,7 @@ const Contact = () => {
       <section className="section-padding bg-gray-50">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-secondary mb-4">
+            <h2 className="text-2xl font-bold text-secondary mb-4">
               Frequently Asked Questions
             </h2>
             <p className="text-gray-600">
