@@ -1,12 +1,12 @@
 import React from 'react';
-import { Send, Facebook, Twitter, Linkedin, Youtube } from 'lucide-react';
+import { Send, Facebook, Linkedin, Phone } from 'lucide-react';
 
 const SocialMediaLinks = () => {
   const socialLinks = [
     {
       name: 'Telegram',
       icon: Send,
-      url: 'https://t.me/lalnova',
+      url: 'https://t.me/LalNova_Technologies',
       color: 'bg-primary hover:bg-teal-700'
     },
     {
@@ -16,21 +16,15 @@ const SocialMediaLinks = () => {
       color: 'bg-primary hover:bg-teal-700'
     },
     {
-      name: 'Twitter',
-      icon: Twitter,
-      url: 'https://twitter.com/lalnova',
+      name: 'WhatsApp',
+      icon: Phone,
+      url: 'https://wa.me/251942560505',
       color: 'bg-primary hover:bg-teal-700'
     },
     {
       name: 'LinkedIn',
       icon: Linkedin,
       url: 'https://linkedin.com/company/lalnova',
-      color: 'bg-primary hover:bg-teal-700'
-    },
-    {
-      name: 'YouTube',
-      icon: Youtube,
-      url: 'https://youtube.com/@lalnova',
       color: 'bg-primary hover:bg-teal-700'
     }
   ];
