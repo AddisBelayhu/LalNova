@@ -4,6 +4,7 @@ import { ArrowRight, Code, Cloud, Settings, Users } from 'lucide-react';
 import axios from 'axios';
 import { getCategoryName, getCategoryColor } from '../utils/categories';
 import { getPreviewText, sanitizeHtml } from '../utils/htmlUtils';
+import { mockServices, mockProjects, isStaticDeployment } from '../utils/mockData';
 import '../styles/richtext.css';
 
 const Home = () => {
@@ -16,21 +17,13 @@ const Home = () => {
   }, []);
 
   const fetchServices = async () => {
-    try {
-      const response = await axios.get('/api/services');
-      setServices(response.data.slice(0, 4)); // Show first 4 services
-    } catch (error) {
-      console.error('Error fetching services:', error);
-    }
+    // Always use mock data for static deployment (no backend)
+    setServices(mockServices.slice(0, 4));
   };
 
   const fetchProjects = async () => {
-    try {
-      const response = await axios.get('/api/projects');
-      setProjects(response.data.slice(0, 3)); // Show first 3 projects
-    } catch (error) {
-      console.error('Error fetching projects:', error);
-    }
+    // Always use mock data for static deployment (no backend)
+    setProjects(mockProjects.slice(0, 3));
   };
 
   const getServiceIcon = (iconName) => {

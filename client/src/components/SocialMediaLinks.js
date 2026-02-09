@@ -12,13 +12,13 @@ const SocialMediaLinks = () => {
     {
       name: 'Facebook',
       icon: Facebook,
-      url: 'https://facebook.com/lalnova',
+      url: 'https://web.facebook.com/profile.php?id=61587409542576',
       color: 'bg-primary hover:bg-teal-700'
     },
     {
       name: 'WhatsApp',
       icon: Phone,
-      url: 'https://wa.me/251942560505',
+      url: 'https://wa.me/message/UFX7NXAYUGGHK1',
       color: 'bg-primary hover:bg-teal-700'
     },
     {

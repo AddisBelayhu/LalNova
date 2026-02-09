@@ -46,11 +46,6 @@
     "tailwindcss": "^3.3.6"
   },
 
-  "scripts": {
-    "build": "next build", 
-    "build": "react-scripts build", 
-    "build": "npm run generate"  
-  },
   "proxy": "http://localhost:5000"
   
 }
