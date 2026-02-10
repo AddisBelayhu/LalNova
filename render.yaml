@@ -1,0 +1,46 @@
+# Render Blueprint for LalNova Technologies
+# This file allows one-click deployment of the entire stack
+
+services:
+  # Backend API Service
+  - type: web
+    name: lalnova-backend
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install && cd server && npx prisma generate && npx prisma migrate deploy
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: DATABASE_URL
+        fromDatabase:
+          name: lalnova-database
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_EMAIL
+        value: vibrantteam@lalnova.com
+      - key: ADMIN_PASSWORD
+        sync: false
+
+  # Frontend Static Site
+  - type: web
+    name: lalnova-frontend
+    env: static
+    region: oregon
+    plan: free
+    buildCommand: cd client && npm install && npm run build
+    staticPublishPath: client/build
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://lalnova-backend.onrender.com
+
+databases:
+  # PostgreSQL Database
+  - name: lalnova-database
+    plan: free
+    databaseName: lalnova_db
+    user: lalnova_user

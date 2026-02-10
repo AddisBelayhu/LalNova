@@ -218,6 +218,33 @@ const Contact = () => {
         </div>
       </section>
 
+      {/* Google Map Section */}
+      <section className="section-padding bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold text-secondary mb-4">
+              Visit Our Office
+            </h2>
+            <p className="text-gray-600">
+              Find us at our location in Addis Ababa
+            </p>
+          </div>
+          
+          <div className="rounded-xl overflow-hidden shadow-lg" style={{ pointerEvents: 'auto' }}>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.287644789184!2d38.75131099999999!3d9.0116016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85dcf6b10fb3%3A0x1aed1d5cca6b8652!2sOrganization%20for%20Rehabilitation%20and%20Development%20in%20Amhara%20(ORDA)%20HQ!5e0!3m2!1sen!2set!4v1707000000000!5m2!1sen!2set"
+              width="100%"
+              height="450"
+              style={{ border: 0, pointerEvents: 'auto' }}
+              allowFullScreen={true}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="LalNova Technologies Office Location"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <section className="section-padding bg-gray-50">
         <div className="max-w-4xl mx-auto">
