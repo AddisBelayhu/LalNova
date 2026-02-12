@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import { AuthProvider } from './context/AuthContext';
 import ErrorBoundary from './components/ErrorBoundary';
 import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
@@ -13,47 +12,29 @@ import About from './pages/About';
 import Services from './pages/Services';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
-import AdminLogin from './pages/AdminLogin';
-import AdminDashboard from './pages/AdminDashboard';
-import SecretAdminAccess from './pages/SecretAdminAccess';
-import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
     <ErrorBoundary>
-      <AuthProvider>
-        <Router>
-          <ScrollToTop />
-          <div className="min-h-screen bg-gray-50">
-            <Navbar />
-            <main>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/projects" element={<Projects />} />
-                <Route path="/contact" element={<Contact />} />
-                
-                {/* Hidden admin access routes */}
-                <Route path="/secret-admin-access" element={<SecretAdminAccess />} />
-                <Route path="/admin/login" element={<AdminLogin />} />
-                <Route 
-                  path="/admin/dashboard" 
-                  element={
-                    <ProtectedRoute>
-                      <AdminDashboard />
-                    </ProtectedRoute>
-                  } 
-                />
-              </Routes>
-            </main>
-            <Footer />
-            <SocialMediaLinks />
-            <Chatbot />
-            <Toaster position="top-right" />
-          </div>
-        </Router>
-      </AuthProvider>
+      <Router>
+        <ScrollToTop />
+        <div className="min-h-screen bg-gray-50">
+          <Navbar />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          </main>
+          <Footer />
+          <SocialMediaLinks />
+          <Chatbot />
+          <Toaster position="top-right" />
+        </div>
+      </Router>
     </ErrorBoundary>
   );
 }

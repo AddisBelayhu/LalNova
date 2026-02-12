@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
 
 const Logo = () => {
   const [imageError, setImageError] = useState(false);
@@ -29,7 +28,6 @@ const Logo = () => {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const { user, logout } = useAuth();
 
   const navigation = [
     { name: 'Home', href: '/' },
@@ -40,9 +38,6 @@ const Navbar = () => {
   ];
 
   const isActive = (path) => location.pathname === path;
-
-  // Hide admin links completely from public users
-  const showAdminLinks = user && user.role === 'ADMIN';
 
   return (
     <nav className="bg-white shadow-lg sticky top-0 z-50">
@@ -66,24 +61,6 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
-
-            {/* Only show admin links if user is logged in as admin */}
-            {showAdminLinks && (
-              <div className="flex items-center space-x-4">
-                <Link
-                  to="/admin/dashboard"
-                  className="text-sm font-medium text-primary hover:text-blue-700"
-                >
-                  Dashboard
-                </Link>
-                <button
-                  onClick={logout}
-                  className="text-sm font-medium text-gray-700 hover:text-primary"
-                >
-                  Logout
-                </button>
-              </div>
-            )}
           </div>
 
           {/* Mobile menu button */}
@@ -115,28 +92,6 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
-
-            {/* Only show admin links if user is logged in as admin */}
-            {showAdminLinks && (
-              <>
-                <Link
-                  to="/admin/dashboard"
-                  className="block px-3 py-2 text-base font-medium text-primary hover:text-blue-700"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Dashboard
-                </Link>
-                <button
-                  onClick={() => {
-                    logout();
-                    setIsOpen(false);
-                  }}
-                  className="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-primary"
-                >
-                  Logout
-                </button>
-              </>
-            )}
           </div>
         </div>
       )}
