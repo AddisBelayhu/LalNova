@@ -104,20 +104,27 @@ const About = () => {
             <div>
               <h2 className="text-2xl font-bold text-secondary mb-6">Our Story</h2>
               <p className="text-gray-600 mb-4">
-                Founded in 2025, LalNova Technologies emerged from a vision to bridge
-                the gap between cutting-edge technology and practical business solutions.
-                Our journey began with a small team of passionate developers and has
-                grown into a comprehensive technology partner for businesses worldwide.
+                LalNova Technologies PLC is founded by energetic and visionary professionals 
+                with vast experience in ICT, business and project management skills. LalNova 
+                Technologies is an emerging and disruptive technology company dedicated to
+                 delivering state-of-the-art technology solutions that empower businesses and 
+                 organizations to achieve their digital transformation and operational 
+                 excellence in the ever-evolving digital landscape.
               </p>
               <p className="text-gray-600 mb-4">
-                We believe that technology should empower businesses, not complicate them.
-                This philosophy drives everything we do, from our initial consultation
-                to the final deployment of your solution.
+                Established with a vision to bridge the gap between technology and business efficiency, 
+                LalNova Technologies provides a wide range of integrated services including software 
+                development, ICT consultancy, data collection & analytics, networking solutions, 
+                training and other ICT-related solutions tailored to meet diverse client needs.
               </p>
               <p className="text-gray-600">
-                Today, we continue to innovate and adapt, staying ahead of technology
-                trends to provide our clients with solutions that not only meet their
-                current needs but also prepare them for future challenges.
+                LalNova Technologies strives to become a trusted technology solutions partner for public 
+                and private institutions, contributing to Ethiopia’s growing digital economy and expanding 
+                its impact across the region. The company’s multidisciplinary team of software engineers,
+                data analysts and ICT experts is committed to delivering innovative, cost-effective, and 
+                future -ready solutions that align with international standards and best practices. 
+                Its headquarters is located in Addis Ababa, Kirkos Sub-City, Woreda 10, Leghar, 
+                Amhara Rehabilitation and Development Organization (ORDA) building, office number 15/C-32. 
               </p>
             </div>
             <div>
@@ -142,8 +149,9 @@ const About = () => {
               </div>
               <h3 className="text-2xl font-bold text-secondary mb-4">Our Mission</h3>
               <p className="text-gray-600">
-                To empower businesses with innovative technology solutions that drive
-                growth, efficiency, and competitive advantage in the digital age.
+               
+                To empower Ethiopia's digital future through innovative,
+                 reliable, and human-centred technology solutions. 
               </p>
             </div>
             <div className="card text-center">
@@ -152,8 +160,9 @@ const About = () => {
               </div>
               <h3 className="text-2xl font-bold text-secondary mb-4">Our Vision</h3>
               <p className="text-gray-600">
-                To be the leading technology partner that transforms businesses
-                through intelligent solutions and exceptional service delivery.
+               
+                Committed to delivering end-to-end digital solutions that drive efficiency, innovation, and sustainable
+                 growth through cutting-edge technologies tailored to our clients’ unique needs. 
               </p>
             </div>
           </div>
@@ -249,6 +258,7 @@ const About = () => {
                 to provide cutting-edge solutions for our clients.
               </p>
             </div>
+            
           </div>
         </div>
       </section>
