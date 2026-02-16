@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { getCategoryName, getCategoryColor } from '../utils/categories';
 import { sanitizeHtml } from '../utils/htmlUtils';
-import { mockServices, isStaticDeployment } from '../utils/mockData';
+import { getApiUrl } from '../config/api';
+import { mockServices } from '../utils/mockData';
 import '../styles/richtext.css';
 
 const Services = () => {
@@ -16,9 +17,16 @@ const Services = () => {
   }, []);
 
   const fetchServices = async () => {
-    // Always use mock data for static deployment (no backend)
-    setServices(mockServices);
-    setLoading(false);
+    try {
+      const url = getApiUrl('/api/services');
+      const res = await axios.get(url);
+      setServices(Array.isArray(res.data) ? res.data : []);
+    } catch (err) {
+      console.error('Failed to fetch services:', err);
+      setServices(mockServices);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const getServiceIcon = (iconName) => {

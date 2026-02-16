@@ -1,0 +1,6 @@
+# Copy this file to public_html as .htaccess
+# (public_html is the document root for lalnova.com)
+# This proxies all requests to your Node app. Replace 5000 with your app's port if different.
+
+RewriteEngine On
+RewriteRule ^(.*)$ http://127.0.0.1:5000/$1 [P,L]

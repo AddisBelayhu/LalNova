@@ -1,0 +1,18 @@
+=== cPanel Upload Instructions ===
+
+1. MAIN SITE (lalnova.com)
+   - Upload this ENTIRE folder to public_html (or create public_html/Lalnova and put contents there)
+   - Structure on server: package.json, server/, client/ must be together (app root)
+   - In Setup Node.js App: Application root = folder with package.json, Startup file = server/index.js
+   - Run NPM Install, then Start
+
+2. PROXY .htaccess (for lalnova.com)
+   - Copy HTACCESS-FOR-PUBLIC_HTML.txt to public_html/.htaccess
+   - (Replace 5000 with your Node app port if different)
+
+3. ADMIN (admin.lalnova.com)
+   - Upload contents of admin-dist/ to the document root of admin.lalnova.com
+   - (.htaccess is already included for SPA routing)
+
+4. On server Terminal (from app root): npm install --production
+   - Do NOT run prisma migrate/seed on cPanel (run from your PC - see CPANEL_HOSTING.md)
