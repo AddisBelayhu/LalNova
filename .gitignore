@@ -20,6 +20,12 @@ pnpm-debug.log*
 .turbo
 .vite
 
+# Upload / archive zips (do not commit)
+*.zip
+LalNova.zip
+client.zip
+lalnova-cpanel-upload.zip
+
 # Frontend build outputs
 client/build
 client/dist
