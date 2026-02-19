@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { ExternalLink, Calendar } from 'lucide-react';
 import axios from 'axios';
-import { mockProjects, isStaticDeployment } from '../utils/mockData';
+import { getApiUrl } from '../config/api';
+import { mockProjects } from '../utils/mockData';
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -12,9 +13,16 @@ const Projects = () => {
   }, []);
 
   const fetchProjects = async () => {
-    // Always use mock data for static deployment (no backend)
-    setProjects(mockProjects);
-    setLoading(false);
+    try {
+      const url = getApiUrl('/api/projects');
+      const res = await axios.get(url);
+      setProjects(Array.isArray(res.data) ? res.data : []);
+    } catch (err) {
+      console.error('Failed to fetch projects:', err);
+      setProjects(mockProjects);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const formatDate = (dateString) => {

@@ -4,7 +4,8 @@ import { ArrowRight, Code, Cloud, Settings, Users } from 'lucide-react';
 import axios from 'axios';
 import { getCategoryName, getCategoryColor } from '../utils/categories';
 import { getPreviewText, sanitizeHtml } from '../utils/htmlUtils';
-import { mockServices, mockProjects, isStaticDeployment } from '../utils/mockData';
+import { getApiUrl } from '../config/api';
+import { mockServices, mockProjects } from '../utils/mockData';
 import '../styles/richtext.css';
 
 const Home = () => {
@@ -17,13 +18,25 @@ const Home = () => {
   }, []);
 
   const fetchServices = async () => {
-    // Always use mock data for static deployment (no backend)
-    setServices(mockServices.slice(0, 4));
+    try {
+      const res = await axios.get(getApiUrl('/api/services'));
+      const data = Array.isArray(res.data) ? res.data : [];
+      setServices(data.slice(0, 4));
+    } catch (err) {
+      console.error('Failed to fetch services:', err);
+      setServices(mockServices.slice(0, 4));
+    }
   };
 
   const fetchProjects = async () => {
-    // Always use mock data for static deployment (no backend)
-    setProjects(mockProjects.slice(0, 3));
+    try {
+      const res = await axios.get(getApiUrl('/api/projects'));
+      const data = Array.isArray(res.data) ? res.data : [];
+      setProjects(data.slice(0, 3));
+    } catch (err) {
+      console.error('Failed to fetch projects:', err);
+      setProjects(mockProjects.slice(0, 3));
+    }
   };
 
   const getServiceIcon = (iconName) => {

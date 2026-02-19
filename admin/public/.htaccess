@@ -1,0 +1,6 @@
+# SPA fallback: serve index.html for all routes (fixes 404 on refresh for /login, etc.)
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]

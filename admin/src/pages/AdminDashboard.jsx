@@ -5,6 +5,8 @@ import {
   ChevronDown,
   LogOut,
   Menu,
+  PanelLeftClose,
+  PanelLeftOpen,
   Search,
   Settings,
   Users,
@@ -31,6 +33,8 @@ const AdminDashboard = () => {
   const [projects, setProjects] = useState([]);
   const [messages, setMessages] = useState([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState('');
   const [editingItem, setEditingItem] = useState(null);
@@ -246,22 +250,36 @@ const AdminDashboard = () => {
       <div className="flex min-h-screen">
         <div
           className={
-            `fixed inset-y-0 left-0 z-50 w-72 bg-slate-900 text-white transform transition-transform duration-200 ` +
-            `${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 lg:static`
+            `fixed inset-y-0 left-0 z-50 bg-white border-r border-slate-200 transform transition-all duration-200 ` +
+            `${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 lg:static ` +
+            (sidebarCollapsed ? 'w-[4.5rem]' : 'w-72')
           }
         >
-          <div className="h-16 px-6 flex items-center justify-between border-b border-slate-800">
-            <div className="font-semibold tracking-wide">LalNova Admin</div>
-            <button
-              className="lg:hidden text-slate-300 hover:text-white"
-              onClick={() => setSidebarOpen(false)}
-              type="button"
-            >
-              <X size={20} />
-            </button>
+          <div className={`h-16 flex items-center justify-between border-b border-slate-200 ${sidebarCollapsed ? 'px-2' : 'px-4'}`}>
+            <div className="flex items-center gap-2 min-w-0 overflow-hidden">
+              <img src="/Lalnova-favicon.png" alt="LalNova" className="w-8 h-8 flex-shrink-0" />
+              {!sidebarCollapsed && <span className="font-semibold tracking-wide text-slate-800 truncate">LalNova Admin</span>}
+            </div>
+            <div className="flex items-center gap-0.5 flex-shrink-0">
+              <button
+                type="button"
+                className="hidden lg:flex p-2 rounded-lg text-slate-500 hover:bg-slate-100 hover:text-slate-700"
+                onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+                title={sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+              >
+                {sidebarCollapsed ? <PanelLeftOpen size={18} /> : <PanelLeftClose size={18} />}
+              </button>
+              <button
+                className="lg:hidden p-2 text-slate-500 hover:text-slate-700"
+                onClick={() => setSidebarOpen(false)}
+                type="button"
+              >
+                <X size={18} />
+              </button>
+            </div>
           </div>
 
-          <nav className="px-4 py-6 space-y-1">
+          <nav className={`py-4 space-y-1 ${sidebarCollapsed ? 'px-2' : 'px-4'}`}>
             {tabs.map((tab) => {
               const isActive = activeTab === tab.id;
               return (
@@ -272,29 +290,18 @@ const AdminDashboard = () => {
                     setActiveTab(tab.id);
                     setSidebarOpen(false);
                   }}
+                  title={sidebarCollapsed ? tab.label : undefined}
                   className={
-                    `w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ` +
-                    `${isActive ? 'bg-slate-800 text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white'}`
+                    `w-full flex items-center rounded-xl transition-colors ` +
+                    (sidebarCollapsed ? 'justify-center p-3' : 'gap-3 px-4 py-3') +
+                    ` ${isActive ? 'bg-slate-100 text-slate-900' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'}`
                   }
                 >
-                  <tab.icon size={18} />
-                  <span className="text-sm font-medium">{tab.label}</span>
+                  <tab.icon size={18} className="flex-shrink-0" />
+                  {!sidebarCollapsed && <span className="text-sm font-medium truncate">{tab.label}</span>}
                 </button>
               );
             })}
-
-            <div className="pt-6">
-              <div className="h-px bg-slate-800" />
-            </div>
-
-            <button
-              type="button"
-              onClick={logout}
-              className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800 hover:text-white transition-colors"
-            >
-              <LogOut size={18} />
-              <span className="text-sm font-medium">Logout</span>
-            </button>
           </nav>
         </div>
 
@@ -328,13 +335,48 @@ const AdminDashboard = () => {
                   <Settings size={18} />
                 </button>
 
-                <div className="flex items-center gap-2 pl-2">
-                  <div className="w-9 h-9 rounded-xl bg-slate-200" />
-                  <div className="hidden sm:block">
-                    <div className="text-sm font-semibold text-slate-900">{user?.name || 'Admin'}</div>
-                    <div className="text-xs text-slate-500">{user?.email || 'admin'}</div>
-                  </div>
-                  <ChevronDown size={16} className="text-slate-400" />
+                <div className="relative">
+                  <button
+                    type="button"
+                    onClick={() => setUserDropdownOpen(!userDropdownOpen)}
+                    className="flex items-center gap-2 pl-2 rounded-xl hover:bg-slate-100 py-1.5 pr-2"
+                  >
+                    <img src="/Lalnova-favicon.png" alt="" className="w-9 h-9 rounded-xl object-cover" />
+                    <div className="hidden sm:block text-left">
+                      <div className="text-sm font-semibold text-slate-900">{user?.name || 'Admin'}</div>
+                      <div className="text-xs text-slate-500">{user?.email || 'admin'}</div>
+                    </div>
+                    <ChevronDown size={16} className={`text-slate-400 transition-transform ${userDropdownOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  {userDropdownOpen && (
+                    <>
+                      <div
+                        className="fixed inset-0 z-40"
+                        onClick={() => setUserDropdownOpen(false)}
+                        onKeyDown={(e) => e.key === 'Escape' && setUserDropdownOpen(false)}
+                        role="button"
+                        tabIndex={0}
+                        aria-label="Close dropdown"
+                      />
+                      <div className="absolute right-0 mt-1 w-56 py-1 bg-white rounded-xl shadow-lg border border-slate-200 z-50">
+                        <div className="px-4 py-3 border-b border-slate-100">
+                          <div className="text-sm font-semibold text-slate-900">{user?.name || 'Admin'}</div>
+                          <div className="text-xs text-slate-500 truncate">{user?.email || 'admin'}</div>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setUserDropdownOpen(false);
+                            logout();
+                          }}
+                          className="w-full flex items-center gap-2 px-4 py-3 text-left text-sm text-slate-700 hover:bg-slate-50"
+                        >
+                          <LogOut size={16} />
+                          Logout
+                        </button>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

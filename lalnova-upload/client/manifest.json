@@ -1,0 +1,38 @@
+{
+  "short_name": "LalNova",
+  "name": "LalNova Technologies",
+  "description": "Building Modern Solutions for a Smarter Future",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "Lalnova-favicon.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "Lalnova-favicon.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "Lalnova-favicon.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    },
+    {
+      "src": "Lalnova-favicon.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#2D9CDB",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary"
+}
