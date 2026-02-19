@@ -232,7 +232,7 @@ const Contact = () => {
           
           <div className="rounded-xl overflow-hidden shadow-lg" style={{ pointerEvents: 'auto' }}>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.287644789184!2d38.75131099999999!3d9.0116016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85dcf6b10fb3%3A0x1aed1d5cca6b8652!2sOrganization%20for%20Rehabilitation%20and%20Development%20in%20Amhara%20(ORDA)%20HQ!5e0!3m2!1sen!2set!4v1707000000000!5m2!1sen!2set"
+              src="https://www.google.com/maps/place/Organization+for+Rehabilitation+and+Development+in+Amhara+(ORDA)+HQ/@9.0116016,38.751311,17z/data=!4m14!1m7!3m6!1s0x164b85dcf6b10fb3:0x1aed1d5cca6b8652!2sOrganization+for+Rehabilitation+and+Development+in+Amhara+(ORDA)+HQ!8m2!3d9.0116016!4d38.7538859!16s%2Fg%2F11pzkmlj7b!3m5!1s0x164b85dcf6b10fb3:0x1aed1d5cca6b8652!8m2!3d9.0116016!4d38.7538859!16s%2Fg%2F11pzkmlj7b?entry=ttu&g_ep=EgoyMDI2MDIxMS4wIKXMDSoASAFQAw%3D%3D"
               width="100%"
               height="450"
               style={{ border: 0, pointerEvents: 'auto' }}
