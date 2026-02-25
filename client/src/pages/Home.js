@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Code, Cloud, Settings, Users } from 'lucide-react';
+import { ArrowRight, Code, Cloud, Settings, Users, Database , BarChart3, Sparkles, Shield} from 'lucide-react';
 import axios from 'axios';
 import { getCategoryName, getCategoryColor } from '../utils/categories';
 import { getPreviewText, sanitizeHtml } from '../utils/htmlUtils';
@@ -40,11 +40,16 @@ const Home = () => {
   };
 
   const getServiceIcon = (iconName) => {
-    const icons = {
-      code: <Code size={48} />,
-      cloud: <Cloud size={48} />,
-      integration: <Settings size={48} />,
-      consulting: <Users size={48} />
+       const icons = {
+      code: <Code size={64} />,
+      cloud: <Cloud size={64} />,
+      integration: <Settings size={64} />,
+      consulting: <Users size={64} />,
+      analytics: <Database size={64} />,
+      business: <BarChart3 size={64} />,
+      ai: <Sparkles size={64} />,
+      security: <Shield size={64} />,
+      data: <Database size={64} />,
     };
     return icons[iconName] || <Code size={48} />;
   };

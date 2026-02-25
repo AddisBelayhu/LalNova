@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Code, Cloud, Settings, Users, ArrowRight } from 'lucide-react';
+import { Code, Cloud, Settings, Users, ArrowRight, Database, BarChart3, Sparkles, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { getCategoryName, getCategoryColor } from '../utils/categories';
@@ -34,7 +34,12 @@ const Services = () => {
       code: <Code size={64} />,
       cloud: <Cloud size={64} />,
       integration: <Settings size={64} />,
-      consulting: <Users size={64} />
+      consulting: <Users size={64} />,
+      analytics: <Database size={64} />,
+      business: <BarChart3 size={64} />,
+      ai: <Sparkles size={64} />,
+      security: <Shield size={64} />,
+      data: <Database size={64} />,
     };
     return icons[iconName] || <Code size={64} />;
   };

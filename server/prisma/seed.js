@@ -28,6 +28,12 @@ async function main() {
       category: 'SOFTWARE_DEV'
     },
     {
+      title: 'Big Data Analytics',
+      description: 'Transform raw data into actionable insights using advanced analytics and machine learning techniques.',
+      icon: 'analytics',
+      category: 'ANALYTICS'
+    },
+    {
       title: 'IT Consulting',
       description: 'Strategic technology consulting to optimize your IT infrastructure and drive digital transformation.',
       icon: 'consulting',

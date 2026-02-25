@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -77,10 +77,13 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-700 mt-8 pt-8 text-center">
-          <p className="text-gray-300">
-            © {new Date().getFullYear()} LalNova Technologies. All rights reserved.
-          </p>
+        <div className="border-t border-gray-700 mt-8 pt-8">
+          <div className="flex flex-col md:flex-row justify-center items-center">
+            <p className="text-gray-300 text-center">
+              &copy; {new Date().getFullYear()} LalNova Technologies. All rights reserved.
+            </p>
+          
+          </div>
         </div>
       </div>
     </footer>

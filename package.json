@@ -19,7 +19,6 @@
     "deploy:prep": "npm run build:full && npm run migrate:prod && npm run seed"
   },
   "dependencies": {
-    "@prisma/client": "^5.7.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
@@ -32,8 +31,9 @@
     "mysql2": "^3.14.0"
   },
   "devDependencies": {
+    "@prisma/client": "^5.6.0",
     "concurrently": "^8.2.2",
     "nodemon": "^3.1.11",
-    "prisma": "^5.7.1"
+    "prisma": "^5.6.0"
   }
 }

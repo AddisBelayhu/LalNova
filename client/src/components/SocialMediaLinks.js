@@ -24,7 +24,7 @@ const SocialMediaLinks = () => {
     {
       name: 'LinkedIn',
       icon: Linkedin,
-      url: 'https://linkedin.com/company/lalnova',
+      url: 'https://www.linkedin.com/company/lalnova-technologies/posts/?feedView=all&viewAsMember=true',
       color: 'bg-primary hover:bg-teal-700'
     }
   ];
