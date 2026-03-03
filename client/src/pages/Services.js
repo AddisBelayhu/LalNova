@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Code, Cloud, Settings, Users, ArrowRight, Database, BarChart3, Sparkles, Shield } from 'lucide-react';
+import { Code, Cloud, Settings, Users, ArrowRight, Database, BarChart3, Sparkles, Shield, Network, GraduationCap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { getCategoryName, getCategoryColor } from '../utils/categories';
@@ -40,6 +40,8 @@ const Services = () => {
       ai: <Sparkles size={64} />,
       security: <Shield size={64} />,
       data: <Database size={64} />,
+      network: <Network size={64} />,
+      training: <GraduationCap size={64} />,
     };
     return icons[iconName] || <Code size={64} />;
   };
@@ -61,11 +63,11 @@ const Services = () => {
       <section className="bg-gradient-to-br from-primary to-blue-800 text-white section-padding">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-6">
-            Our Services
+            Our Solutions
           </h1>
           <p className="text-base md:text-lg text-blue-100">
             Comprehensive technology solutions designed to accelerate your business growth 
-            and digital transformation journey.
+            and digital transformation journey. 
           </p>
         </div>
       </section>
@@ -78,8 +80,9 @@ const Services = () => {
               What We Offer
             </h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              From custom software development to cloud migration, we provide 
-              end-to-end technology solutions tailored to your specific needs.
+              Solutions for a Digital Era.  From bespoke software engineering to seamless cloud transitions, 
+              we deliver end-to-end technology ecosystems designed to solve today’s challenges and power
+              tomorrow’s growth.
             </p>
           </div>
 
@@ -122,10 +125,10 @@ const Services = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-2xl font-bold text-secondary mb-4">
-              Our Process
+              How We Power Your Digital Journey
             </h2>
             <p className="text-gray-600 text-lg">
-              A proven methodology that ensures successful project delivery
+              A proven methodology designed to accelerate delivery and ensure your digital success. 
             </p>
           </div>
 
@@ -133,23 +136,23 @@ const Services = () => {
             {[
               {
                 step: '01',
-                title: 'Discovery',
-                description: 'We analyze your requirements and understand your business goals.'
+                title: 'Strategy & Discovery ',
+                description: 'We deep-dive into your operational challenges to align our technical roadmap with your long-term business objectives.'
               },
               {
                 step: '02',
-                title: 'Planning',
-                description: 'We create a detailed project plan with timelines and milestones.'
+                title: 'Architecture & Planning ',
+                description: 'We design a robust blueprint and project timeline, ensuring every milestone is optimized for scalability and performance.'
               },
               {
                 step: '03',
-                title: 'Development',
-                description: 'Our team builds your solution using best practices and modern technologies.'
+                title: 'Agile Development',
+                description: 'Our engineers bring the vision to life using modern tech stacks and iterative sprints, maintaining transparency at every stage.'
               },
               {
                 step: '04',
-                title: 'Delivery',
-                description: 'We deploy, test, and provide ongoing support for your solution.'
+                title: 'Deployment & Evolution ',
+                description: 'We launch with rigorous testing and provide the continuous support needed to ensure your solution evolves with your business.  '
               }
             ].map((process, index) => (
               <div key={index} className="text-center">

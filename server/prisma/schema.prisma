@@ -19,12 +19,13 @@ model User {
 }
 
 model Service {
-  id          String   @id @default(cuid())
-  title       String
-  description String
-  icon        String
-  category    String
-  createdAt   DateTime @default(now()) @map("created_at")
+  id             String   @id @default(cuid())
+  title          String
+  description    String
+  icon           String
+  category       String
+  featuredOnHome Boolean  @default(false) @map("featured_on_home")
+  createdAt      DateTime @default(now()) @map("created_at")
 
   @@map("services")
 }
@@ -44,8 +45,10 @@ model Project {
 model ContactMessage {
   id        String   @id @default(cuid())
   name      String
+  company   String?
   email     String
   phone     String?
+  subject   String
   message   String
   createdAt DateTime @default(now()) @map("created_at")
 

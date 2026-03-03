@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Target, Eye, Users, Award } from 'lucide-react';
+﻿import React, { useState } from 'react';
+import { Target, Eye, Users, Award, Zap, Lightbulb, Shield, TrendingUp } from 'lucide-react';
 
 const TeamMemberImage = ({ src, fallbackSrc, alt, className }) => {
   const [imgSrc, setImgSrc] = useState(src);
@@ -50,28 +50,29 @@ const About = () => {
       role: 'CEO & Founder',
       image: '/images/team/kindie-asmamaw.jpg',
       fallbackImage: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face',
-      bio: '15+ years in technology leadership and business strategy.'
+      bio: 'Business Strategy & Technology Leadership.'
     },
     {
       name: 'Gebre Alamne',
       role: 'CTO',
       image: '/images/team/gebre-alamne.jpg',
       fallbackImage: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face',
-      bio: 'Expert in cloud architecture and software development.'
+      bio: 'Product Architecture, Engineering Leadership & Technical Innovation.'
+    },
+    
+    {
+      name: 'Simamlak Admasu',
+      role: 'CMO',
+      image: '/images/team/simamlak-admasu.jpg',
+      fallbackImage: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face',
+      bio: 'Marketing Strategy, Brand Growth & Customer Acquisition.'
     },
     {
       name: 'Addis Belayhun',
-      role: 'Lead Developer',
+      role: 'COO',
       image: '/images/team/addis-belayhun.jpg',
       fallbackImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face',
-      bio: 'Full-stack developer with expertise in modern frameworks.'
-    },
-    {
-      name: 'Simamlak Admasu',
-      role: 'Project Manager',
-      image: '/images/team/simamlak-admasu.jpg',
-      fallbackImage: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face',
-      bio: 'Agile methodology expert ensuring project success.'
+      bio: 'Operations, Scalability & Project Execution.'
     }
   ];
 
@@ -88,11 +89,12 @@ const About = () => {
       <section className="bg-gradient-to-br from-primary to-blue-800 text-white section-padding">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-6">
-            About LalNova Technologies
+            LalNova Technologies
           </h1>
           <p className="text-base md:text-lg text-blue-100">
-            We are a forward-thinking technology company dedicated to delivering
-            innovative solutions that drive business growth and digital transformation.
+            We are a catalyst for digital evolution. We engineer high-impact digital solutions 
+            that empower businesses to navigate complexity, accelerate growth, and lead with
+            confidence in a digital-first economy. 
           </p>
         </div>
       </section>
@@ -100,32 +102,27 @@ const About = () => {
       {/* Company Story */}
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto">
+          {/* Philosophy Hook */}
+          <div className="text-center mb-16">
+            <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary leading-tight">
+              We don't just build software; we engineer the efficiency that powers your future.
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-2xl font-bold text-secondary mb-6">Our Story</h2>
-              <p className="text-gray-600 mb-4">
-                LalNova Technologies PLC is founded by energetic and visionary professionals 
-                with vast experience in ICT, business and project management skills. LalNova 
-                Technologies is an emerging and disruptive technology company dedicated to
-                 delivering state-of-the-art technology solutions that empower businesses and 
-                 organizations to achieve their digital transformation and operational 
-                 excellence in the ever-evolving digital landscape.
+              <p className="text-gray-700 text-lg leading-relaxed mb-4">
+                Founded by a team of visionary professionals with deep expertise in IT,business strategy, and 
+                project management, Lalnova Technologies is an emerging company in the digital landscape. 
+                We were established with a singular mission: to bridge the gap between technical complexity 
+                and business efficiency. In a rapidly evolving digital landscape, we recognized that businesses
+                donâ€™t just need tools â€“ they need integrated ecosystems.  By combining our energy 
+                with state-of-the-art engineering, we empower businesses and organizations to achieve operational
+                excellence through a unified ecosystem of bespoke software, strategic IT consulting, intelligent
+                data solutions, and secure networking solutions.  
               </p>
-              <p className="text-gray-600 mb-4">
-                Established with a vision to bridge the gap between technology and business efficiency, 
-                LalNova Technologies provides a wide range of integrated services including software 
-                development, ICT consultancy, data collection & analytics, networking solutions, 
-                training and other ICT-related solutions tailored to meet diverse client needs.
-              </p>
-              <p className="text-gray-600">
-                LalNova Technologies strives to become a trusted technology solutions partner for public 
-                and private institutions, contributing to Ethiopia’s growing digital economy and expanding 
-                its impact across the region. The company’s multidisciplinary team of software engineers,
-                data analysts and ICT experts is committed to delivering innovative, cost-effective, and 
-                future -ready solutions that align with international standards and best practices. 
-                Its headquarters is located in Addis Ababa, Kirkos Sub-City, Woreda 10, Leghar, 
-                Amhara Rehabilitation and Development Organization (ORDA) building, office number 15/C-32. 
-              </p>
+             
             </div>
             <div>
               <CompanyImage
@@ -150,8 +147,8 @@ const About = () => {
               <h3 className="text-2xl font-bold text-secondary mb-4">Our Mission</h3>
               <p className="text-gray-600">
                
-                To empower Ethiopia's digital future through innovative,
-                 reliable, and human-centred technology solutions. 
+                Be the premier catalyst for digital excellence, and empowering businesses through innovative
+                digital solutions and strategic technology leadership. 
               </p>
             </div>
             <div className="card text-center">
@@ -161,8 +158,8 @@ const About = () => {
               <h3 className="text-2xl font-bold text-secondary mb-4">Our Vision</h3>
               <p className="text-gray-600">
                
-                Committed to delivering end-to-end digital solutions that drive efficiency, innovation, and sustainable
-                 growth through cutting-edge technologies tailored to our clients’ unique needs. 
+                To engineer high-performance, end-to-end digital solutions that accelerate efficiency and drive 
+                sustainable growth through cutting-edge technology tailored to the unique goals of our clients.
               </p>
             </div>
           </div>
@@ -193,9 +190,9 @@ const About = () => {
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-2xl font-bold text-secondary mb-4">Meet Our Team</h2>
+            <h2 className="text-2xl font-bold text-secondary mb-4">The Minds Behind Lalnova </h2>
             <p className="text-gray-600 text-lg">
-              The talented individuals behind our success
+              Bridging the gap between technology and business efficiency everyday 
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -224,18 +221,53 @@ const About = () => {
           <div className="text-center mb-12">
             <h2 className="text-2xl font-bold text-secondary mb-4">Our Values</h2>
             <p className="text-gray-600 text-lg">
-              The principles that guide our work and relationships
+              Value-driven: We always provide technology solutions that create real value for clients,    partners, and the society.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="card text-center">
+              <div className="text-primary mb-4 flex justify-center">
+                <TrendingUp size={48} />
+              </div>
+              <h3 className="text-xl font-semibold text-secondary mb-3">Value-driven</h3>
+              <p className="text-gray-600">
+                We always provide technology solutions that create real value for clients, partners, and the society.
+              </p>
+            </div>
+            <div className="card text-center">
+              <div className="text-primary mb-4 flex justify-center">
+                <Zap size={48} />
+              </div>
+              <h3 className="text-xl font-semibold text-secondary mb-3">Agility</h3>
+              <p className="text-gray-600">
+                We embrace flexibility and adaptability to respond quickly to changing technology and client needs.
+              </p>
+            </div>
+            <div className="card text-center">
+              <div className="text-primary mb-4 flex justify-center">
+                <Lightbulb size={48} />
+              </div>
+              <h3 className="text-xl font-semibold text-secondary mb-3">Innovation</h3>
+              <p className="text-gray-600">
+                We constantly pursue creative solutions and cutting-edge technologies to meet client needs and their expectations.
+              </p>
+            </div>
+            <div className="card text-center">
+              <div className="text-primary mb-4 flex justify-center">
+                <Shield size={48} />
+              </div>
+              <h3 className="text-xl font-semibold text-secondary mb-3">Integrity</h3>
+              <p className="text-gray-600">
+                We always act with honesty, transparency, and ethical responsibility in all dealings.
+              </p>
+            </div>
             <div className="card text-center">
               <div className="text-primary mb-4 flex justify-center">
                 <Award size={48} />
               </div>
               <h3 className="text-xl font-semibold text-secondary mb-3">Excellence</h3>
               <p className="text-gray-600">
-                We strive for excellence in every project, delivering solutions
-                that exceed expectations and drive real business value.
+                We strive for the highest quality standards, performance and delivery.
               </p>
             </div>
             <div className="card text-center">
@@ -244,18 +276,7 @@ const About = () => {
               </div>
               <h3 className="text-xl font-semibold text-secondary mb-3">Collaboration</h3>
               <p className="text-gray-600">
-                We believe in the power of collaboration, working closely with
-                our clients to understand their needs and deliver tailored solutions.
-              </p>
-            </div>
-            <div className="card text-center">
-              <div className="text-primary mb-4 flex justify-center">
-                <Target size={48} />
-              </div>
-              <h3 className="text-xl font-semibold text-secondary mb-3">Innovation</h3>
-              <p className="text-gray-600">
-                We embrace innovation and stay at the forefront of technology
-                to provide cutting-edge solutions for our clients.
+                We foster teamwork, and build strong partnerships with clients and stakeholders to achieve shared success.
               </p>
             </div>
             

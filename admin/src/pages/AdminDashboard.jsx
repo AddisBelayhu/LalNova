@@ -155,7 +155,8 @@ const AdminDashboard = () => {
           title: (formData.title || '').trim(),
           description: (formData.description || '').trim(),
           icon: (formData.icon || 'code').trim(),
-          category: formData.category || 'SOFTWARE_DEV'
+          category: formData.category || 'SOFTWARE_DEV',
+          featuredOnHome: formData.featuredOnHome || false
         };
 
         if (submitData.title.length < 3 || submitData.title.length > 200) {
@@ -222,7 +223,8 @@ const AdminDashboard = () => {
           title: '',
           description: '',
           icon: 'code',
-          category: 'SOFTWARE_DEV'
+          category: 'SOFTWARE_DEV',
+          featuredOnHome: false
         };
       case 'projects':
         return {
@@ -525,7 +527,14 @@ const AdminDashboard = () => {
                         <div key={service.id} className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
                           <div className="flex justify-between items-start gap-3 mb-3">
                             <div className="min-w-0">
-                              <h3 className="font-semibold text-slate-900 truncate">{service.title}</h3>
+                              <div className="flex items-center gap-2 mb-1">
+                                <h3 className="font-semibold text-slate-900 truncate">{service.title}</h3>
+                                {service.featuredOnHome && (
+                                  <span className="flex-shrink-0 px-2 py-0.5 bg-yellow-100 text-yellow-800 text-xs font-medium rounded-full">
+                                    ⭐ Featured
+                                  </span>
+                                )}
+                              </div>
                               <div className="text-xs text-slate-600 mt-1">
                                 {categories.find((cat) => cat.id === service.category)?.name || service.category}
                               </div>
@@ -693,6 +702,45 @@ const AdminDashboard = () => {
                       </option>
                     ))}
                   </select>
+                  
+                  {/* Icon Selection */}
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Service Icon
+                    </label>
+                    <select
+                      value={formData.icon || 'code'}
+                      onChange={(e) => setFormData({ ...formData, icon: e.target.value })}
+                      className="w-full px-4 py-2 border rounded-lg"
+                      required
+                    >
+                      <option value="code">Code (Software Development)</option>
+                      <option value="cloud">Cloud (Cloud Solutions)</option>
+                      <option value="analytics">Analytics (Data Analytics)</option>
+                      <option value="data">Database (Data Services)</option>
+                      <option value="consulting">Users (IT Consulting)</option>
+                      <option value="integration">Settings (System Integration)</option>
+                      <option value="network">Network (Network Solutions)</option>
+                      <option value="training">Graduation Cap (Training/Capacity Building)</option>
+                      <option value="business">Bar Chart (Business Intelligence)</option>
+                      <option value="ai">Sparkles (AI/Innovation)</option>
+                      <option value="security">Shield (Security)</option>
+                    </select>
+                  </div>
+                  
+                  {/* Featured on Home Page Checkbox */}
+                  <div className="flex items-center space-x-3 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                    <input
+                      type="checkbox"
+                      id="featuredOnHome"
+                      checked={formData.featuredOnHome || false}
+                      onChange={(e) => setFormData({ ...formData, featuredOnHome: e.target.checked })}
+                      className="w-5 h-5 text-primary border-gray-300 rounded focus:ring-primary cursor-pointer"
+                    />
+                    <label htmlFor="featuredOnHome" className="text-sm font-medium text-gray-700 cursor-pointer">
+                      ⭐ Feature this service on the Home page
+                    </label>
+                  </div>
                 </>
               )}
 

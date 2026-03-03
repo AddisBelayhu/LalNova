@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Code, Cloud, Settings, Users, Database , BarChart3, Sparkles, Shield} from 'lucide-react';
+import { ArrowRight, Code, Cloud, Settings, Users, Database, BarChart3, Sparkles, Shield, Network, GraduationCap } from 'lucide-react';
 import axios from 'axios';
 import { getCategoryName, getCategoryColor } from '../utils/categories';
 import { getPreviewText, sanitizeHtml } from '../utils/htmlUtils';
@@ -21,10 +21,10 @@ const Home = () => {
     try {
       const res = await axios.get(getApiUrl('/api/services'));
       const data = Array.isArray(res.data) ? res.data : [];
-      setServices(data.slice(0, 4));
+      setServices(data); // Show all services, filtering by featuredOnHome happens in render
     } catch (err) {
       console.error('Failed to fetch services:', err);
-      setServices(mockServices.slice(0, 4));
+      setServices(mockServices); // Show all mock services
     }
   };
 
@@ -50,6 +50,8 @@ const Home = () => {
       ai: <Sparkles size={64} />,
       security: <Shield size={64} />,
       data: <Database size={64} />,
+      network: <Network size={64} />,
+      training: <GraduationCap size={64} />,
     };
     return icons[iconName] || <Code size={48} />;
   };
@@ -60,17 +62,15 @@ const Home = () => {
       <section className="bg-gradient-to-br from-primary to-blue-800 text-white section-padding">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-6">
-            Building Modern Solutions for a{' '}
-            <span className="text-accent">Smarter Future</span>
+            Innovating Digital Solutions that Power Your Future {' '}
           </h1>
           <p className="text-base md:text-lg mb-8 text-blue-100 max-w-3xl mx-auto">
-            We specialize in software development, IT Consulting, Training,
-            Data Analytics, and Networking Solutions.
+            Empowering businesses through custom software, strategic IT consulting, data analytics, and networking solutions to thrive in a digital-first economy
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
                      
             <Link to="/contact" className="btn-secondary border-white text-white hover:bg-white hover:text-primary">
-              Get Started
+              Go Digital
             </Link>
           </div>
         </div>
@@ -81,15 +81,15 @@ const Home = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-secondary mb-4">
-              Our Core Services
+              Our Solutions for a Digital Era 
             </h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Comprehensive technology solutions tailored to your business needs
+              High-impact technology solutions tailored to your business needs
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((service) => (
+            {services.filter(service => service.featuredOnHome).map((service) => (
               <div key={service.id} className="card text-center hover:scale-105">
                 <div className="text-primary mb-4 flex justify-center">
                   {getServiceIcon(service.icon)}

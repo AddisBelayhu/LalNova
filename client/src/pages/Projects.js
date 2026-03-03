@@ -145,8 +145,8 @@ const Projects = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
             {[
-              'React', 'Node.js', 'Python', 'PostgreSQL', 'MongoDB', 'AWS',
-              'Docker', 'Kubernetes', 'Vue.js', 'Angular', 'Express', 'Django'
+              'React', 'Node.js', 'Python', 'PostgreSQL', 'MongoDB',
+              'Docker', 'Angular', 'Express', 'Django'
             ].map((tech, index) => (
               <div key={index} className="text-center">
                 <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
@@ -158,31 +158,7 @@ const Projects = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="section-padding bg-primary text-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Project Success Metrics</h2>
-            <p className="text-blue-100">Our track record speaks for itself</p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { number: '98%', label: 'Client Satisfaction' },
-              { number: '100%', label: 'On-Time Delivery' },
-              { number: '3+', label: 'Projects Completed' },
-              { number: '24/7', label: 'Support Available' }
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-blue-100">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* CTA Section */}
       <section className="section-padding bg-white">

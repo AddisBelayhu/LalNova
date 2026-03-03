@@ -8,13 +8,15 @@ const prisma = new PrismaClient();
 // Submit contact message (public)
 router.post('/', validateRequest(schemas.contact), async (req, res) => {
   try {
-    const { name, email, phone, message } = req.body;
+    const { name, company, email, phone, subject, message } = req.body;
 
     const contactMessage = await prisma.contactMessage.create({
       data: {
         name,
+        company: company || null,
         email,
-        phone,
+        phone: phone || null,
+        subject,
         message
       }
     });

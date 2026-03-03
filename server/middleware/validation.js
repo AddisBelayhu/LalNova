@@ -22,8 +22,10 @@ const schemas = {
 
   contact: Joi.object({
     name: Joi.string().min(2).max(100).required(),
+    company: Joi.string().max(100).optional().allow(''),
     email: Joi.string().email().required(),
-    phone: Joi.string().pattern(/^[\+]?[1-9][\d]{0,15}$/).optional(),
+    phone: Joi.string().pattern(/^[\+]?[\d]{1,20}$/).optional().allow(''),
+    subject: Joi.string().min(2).max(200).required(),
     message: Joi.string().min(10).max(1000).required()
   }),
 
@@ -31,7 +33,8 @@ const schemas = {
     title: Joi.string().min(3).max(200).required(),
     description: Joi.string().min(10).max(1000).required(),
     icon: Joi.string().required(),
-    category: Joi.string().min(1).required() // Allow any category string instead of fixed values
+    category: Joi.string().min(1).required(), // Allow any category string instead of fixed values
+    featuredOnHome: Joi.boolean().optional()
   }),
 
   project: Joi.object({
