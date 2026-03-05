@@ -3,6 +3,7 @@ import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import DistortedCaptcha from '../components/DistortedCaptcha';
+import { getApiUrl } from '../config/api';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +15,7 @@ const Contact = () => {
     message: ''
   });
   const [loading, setLoading] = useState(false);
+  const [services, setServices] = useState([]);
   
   // CAPTCHA state
   const [captchaText, setCaptchaText] = useState('');
@@ -23,10 +25,23 @@ const Contact = () => {
   // FAQ expanded state - track which FAQs are expanded
   const [expandedFaqs, setExpandedFaqs] = useState({});
 
-  // Generate new CAPTCHA on component mount
+  // Fetch services and generate CAPTCHA on component mount
   useEffect(() => {
+    fetchServices();
     generateCaptcha();
   }, []);
+
+  const fetchServices = async () => {
+    try {
+      const res = await axios.get(getApiUrl('/api/services'));
+      const data = Array.isArray(res.data) ? res.data : [];
+      setServices(data);
+    } catch (err) {
+      console.error('Failed to fetch services:', err);
+      // Set empty array if fetch fails
+      setServices([]);
+    }
+  };
 
   const generateCaptcha = () => {
     // Generate random 6-character alphanumeric string
@@ -173,16 +188,23 @@ const Contact = () => {
                   <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
                     Subject *
                   </label>
-                  <input
-                    type="text"
+                  <select
                     id="subject"
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                    placeholder="What is this regarding?"
-                  />
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-white"
+                  >
+                    <option value="">Select a service...</option>
+                    {services.map((service) => (
+                      <option key={service.id} value={service.title}>
+                        {service.title}
+                      </option>
+                    ))}
+                    <option value="General Inquiry">General Inquiry</option>
+                    <option value="Other">Other</option>
+                  </select>
                 </div>
 
                 <div>

@@ -139,11 +139,44 @@ If you lose access to the admin area:
 3. **Verify environment variables** are correct
 4. **Check JWT secret** hasn't changed
 
+## **Troubleshooting**
+
+### **Error: "Invalid or expired token"**
+
+This error occurs when the admin dashboard cannot connect to the backend API.
+
+**Quick Fix:**
+1. Rebuild admin dashboard: `cd admin && npm run build`
+2. Upload `admin/dist/` to server
+3. Clear browser cache (Ctrl+Shift+Delete)
+4. Try logging in again
+
+**For detailed troubleshooting, see:**
+- `ADMIN_QUICK_FIX.md` - Quick 3-step fix
+- `ADMIN_TROUBLESHOOTING.md` - Comprehensive troubleshooting guide
+- `ADMIN_DEPLOYMENT.md` - Full deployment instructions
+
+### **Common Issues:**
+
+1. **API calls going to localhost** → Rebuild admin with production config
+2. **CORS errors** → Update `.env.production` CORS_ORIGIN setting
+3. **404 on admin routes** → Configure web server routing (see deployment guide)
+4. **Token expires immediately** → Check JWT_SECRET in server environment
+
 ## **URLs Summary**
 
-- **Public Website:** `https://yourdomain.com`
-- **Secret Admin Access:** `https://yourdomain.com/secret-admin-access`
-- **Admin Login:** `https://yourdomain.com/admin/login`
-- **Admin Dashboard:** `https://yourdomain.com/admin/dashboard`
+- **Public Website:** `https://lalnova.com`
+- **Secret Admin Access:** `https://lalnova.com/secret-admin-access`
+- **Admin Login:** `https://lalnova.com/admin/login`
+- **Admin Dashboard:** `https://lalnova.com/admin/dashboard`
+- **API Health Check:** `https://lalnova.com/api/health`
+
+## **Current Configuration**
+
+- **Domain:** lalnova.com
+- **Admin Email:** vibrantteam@lalnova.com
+- **Admin Password:** novatech@2025
+- **Access Code:** LALNOVA2024ADMIN
+- **API Endpoint:** https://lalnova.com/api
 
 **Remember:** Only share admin access information with authorized personnel!

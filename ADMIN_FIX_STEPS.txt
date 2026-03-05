@@ -1,0 +1,142 @@
+================================================================================
+  FIX "Invalid or expired token" ERROR - STEP BY STEP
+================================================================================
+
+PROBLEM:
+  Admin dashboard on lalnova.com shows "Invalid or expired token"
+
+CAUSE:
+  Admin is connecting to localhost instead of production API
+
+SOLUTION:
+  Rebuild admin dashboard with production settings
+
+================================================================================
+  STEP 1: REBUILD ADMIN DASHBOARD
+================================================================================
+
+Open terminal/command prompt in your project folder and run:
+
+  Windows:
+    rebuild-admin.bat
+
+  Linux/Mac:
+    chmod +x rebuild-admin.sh
+    ./rebuild-admin.sh
+
+  Or manually:
+    cd admin
+    npm run build
+
+This creates a new build in: admin/dist/
+
+================================================================================
+  STEP 2: UPLOAD TO SERVER
+================================================================================
+
+Upload the CONTENTS of admin/dist/ folder to your server:
+
+  - If using cPanel File Manager:
+    1. Navigate to public_html/admin/ (or wherever admin is hosted)
+    2. Delete old files
+    3. Upload all files from admin/dist/
+
+  - If using FTP:
+    1. Connect to your server
+    2. Navigate to admin directory
+    3. Delete old files
+    4. Upload all files from admin/dist/
+
+================================================================================
+  STEP 3: CLEAR BROWSER CACHE
+================================================================================
+
+IMPORTANT! Old cached files will cause issues:
+
+  1. Press Ctrl+Shift+Delete (or Cmd+Shift+Delete on Mac)
+  2. Select "Cached images and files"
+  3. Click "Clear data"
+
+  Or in browser:
+  - Chrome: Settings → Privacy → Clear browsing data
+  - Firefox: Options → Privacy → Clear Data
+  - Edge: Settings → Privacy → Clear browsing data
+
+================================================================================
+  STEP 4: TEST LOGIN
+================================================================================
+
+  1. Go to: https://lalnova.com/secret-admin-access
+
+  2. Enter access code: LALNOVA2024ADMIN
+
+  3. Login with:
+     Email: vibrantteam@lalnova.com
+     Password: novatech@2025
+
+  4. You should now be logged in successfully!
+
+================================================================================
+  VERIFY IT'S FIXED
+================================================================================
+
+To confirm the fix worked:
+
+  1. Press F12 to open browser DevTools
+  2. Go to "Network" tab
+  3. Try logging in
+  4. Look for the login request
+  5. Check it goes to: https://lalnova.com/api/auth/login
+     (NOT http://localhost:5000)
+
+================================================================================
+  TROUBLESHOOTING
+================================================================================
+
+If it still doesn't work:
+
+  1. Check backend is running:
+     Open: https://lalnova.com/api/health
+     Should show: {"status":"ok",...}
+
+  2. Check for errors:
+     Press F12 → Console tab
+     Look for red error messages
+
+  3. Check API calls:
+     Press F12 → Network tab
+     Verify requests go to lalnova.com (not localhost)
+
+  4. See detailed guides:
+     - ADMIN_QUICK_FIX.md
+     - ADMIN_TROUBLESHOOTING.md
+     - ADMIN_DEPLOYMENT.md
+
+================================================================================
+  CONFIGURATION (Already Set)
+================================================================================
+
+These files are already configured correctly:
+
+  admin/.env.production:
+    VITE_API_URL=https://lalnova.com/api
+
+  .env.production:
+    CORS_ORIGIN=https://lalnova.com
+    ADMIN_EMAIL=vibrantteam@lalnova.com
+    ADMIN_PASSWORD=novatech@2025
+
+You just need to rebuild and redeploy!
+
+================================================================================
+  QUICK REFERENCE
+================================================================================
+
+  Domain: lalnova.com
+  Secret Access: https://lalnova.com/secret-admin-access
+  Access Code: LALNOVA2024ADMIN
+  Admin Email: vibrantteam@lalnova.com
+  Admin Password: novatech@2025
+  API Endpoint: https://lalnova.com/api
+
+================================================================================

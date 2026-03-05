@@ -77,8 +77,8 @@ const About = () => {
   ];
 
   const stats = [
-    { number: '3+', label: 'Projects Completed' },
-    { number: '3+', label: 'Happy Clients' },
+    { number: '1', label: 'Projects Completed' },
+    { number: '1', label: 'Happy Clients' },
     { number: '1', label: 'Years Experience' },
     { number: '8+', label: 'Team Members' }
   ];
@@ -117,7 +117,7 @@ const About = () => {
                 project management, Lalnova Technologies is an emerging company in the digital landscape. 
                 We were established with a singular mission: to bridge the gap between technical complexity 
                 and business efficiency. In a rapidly evolving digital landscape, we recognized that businesses
-                donâ€™t just need tools â€“ they need integrated ecosystems.  By combining our energy 
+                don't just need tools, they need integrated ecosystems.  By combining our energy 
                 with state-of-the-art engineering, we empower businesses and organizations to achieve operational
                 excellence through a unified ecosystem of bespoke software, strategic IT consulting, intelligent
                 data solutions, and secure networking solutions.  
@@ -147,8 +147,8 @@ const About = () => {
               <h3 className="text-2xl font-bold text-secondary mb-4">Our Mission</h3>
               <p className="text-gray-600">
                
-                Be the premier catalyst for digital excellence, and empowering businesses through innovative
-                digital solutions and strategic technology leadership. 
+                To engineer high-performance, end-to-end digital solutions that accelerate efficiency and drive
+                sustainable growth through cutting-edge technology tailored to the unique goals of our clients.
               </p>
             </div>
             <div className="card text-center">
@@ -158,8 +158,8 @@ const About = () => {
               <h3 className="text-2xl font-bold text-secondary mb-4">Our Vision</h3>
               <p className="text-gray-600">
                
-                To engineer high-performance, end-to-end digital solutions that accelerate efficiency and drive 
-                sustainable growth through cutting-edge technology tailored to the unique goals of our clients.
+                Be the premier catalyst for digital excellence, and empowering businesses through innovative
+                digital solutions and strategic technology leadership. 
               </p>
             </div>
           </div>

@@ -505,11 +505,14 @@ const AdminDashboard = () => {
                         <div className="space-y-3">
                           {messages.slice(0, 4).map((m) => (
                             <div key={m.id} className="rounded-xl border border-slate-200 p-3">
-                              <div className="flex items-center justify-between">
+                              <div className="flex items-center justify-between mb-1">
                                 <div className="font-medium text-slate-900 text-sm">{m.name}</div>
                                 <div className="text-xs text-slate-500">{new Date(m.createdAt).toLocaleDateString()}</div>
                               </div>
-                              <div className="text-xs text-slate-600 mt-1 line-clamp-2">{m.message}</div>
+                              {m.subject && (
+                                <div className="text-xs text-primary font-medium mb-1">📋 {m.subject}</div>
+                              )}
+                              <div className="text-xs text-slate-600 line-clamp-2">{m.message}</div>
                             </div>
                           ))}
 
@@ -621,11 +624,21 @@ const AdminDashboard = () => {
                     <div className="space-y-4">
                       {messages.map((message) => (
                         <div key={message.id} className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                          <div className="flex justify-between items-start gap-3 mb-2">
-                            <div>
-                              <div className="font-semibold text-slate-900">{message.name}</div>
+                          <div className="flex justify-between items-start gap-3 mb-3">
+                            <div className="flex-1">
+                              <div className="flex items-center gap-3 mb-2">
+                                <div className="font-semibold text-slate-900">{message.name}</div>
+                                {message.company && (
+                                  <span className="text-sm text-slate-600">• {message.company}</span>
+                                )}
+                              </div>
                               <div className="text-sm text-slate-600">{message.email}</div>
                               {message.phone && <div className="text-sm text-slate-600">{message.phone}</div>}
+                              {message.subject && (
+                                <div className="mt-2 inline-block px-3 py-1 bg-primary/10 text-primary rounded-lg text-sm font-medium">
+                                  📋 {message.subject}
+                                </div>
+                              )}
                             </div>
                             <button
                               onClick={() => handleDelete('messages', message.id)}
@@ -635,12 +648,21 @@ const AdminDashboard = () => {
                               <Trash2 size={16} />
                             </button>
                           </div>
-                          <p className="text-slate-700">{message.message}</p>
-                          <p className="text-xs text-slate-500 mt-2">
-                            {new Date(message.createdAt).toLocaleDateString()}
+                          <div className="mt-3 pt-3 border-t border-slate-200">
+                            <p className="text-slate-700 whitespace-pre-wrap">{message.message}</p>
+                          </div>
+                          <p className="text-xs text-slate-500 mt-3">
+                            📅 {new Date(message.createdAt).toLocaleDateString()} at {new Date(message.createdAt).toLocaleTimeString()}
                           </p>
                         </div>
                       ))}
+                      
+                      {messages.length === 0 && (
+                        <div className="text-center py-12">
+                          <MessageSquare className="mx-auto text-slate-300 mb-3" size={48} />
+                          <p className="text-slate-600">No messages yet</p>
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
