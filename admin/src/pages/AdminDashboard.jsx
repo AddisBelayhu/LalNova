@@ -16,7 +16,8 @@ import {
   Edit,
   Trash2,
   Eye,
-  X
+  X,
+  UserPlus
 } from 'lucide-react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
@@ -32,6 +33,7 @@ const AdminDashboard = () => {
   const [services, setServices] = useState([]);
   const [projects, setProjects] = useState([]);
   const [messages, setMessages] = useState([]);
+  const [partnerships, setPartnerships] = useState([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
@@ -104,17 +106,23 @@ const AdminDashboard = () => {
 
   const fetchData = async () => {
     try {
-      const [servicesRes, projectsRes, messagesRes] = await Promise.all([
+      const [servicesRes, projectsRes, messagesRes, partnershipsRes] = await Promise.all([
         axios.get('/api/admin/services'),
         axios.get('/api/admin/projects'),
-        axios.get('/api/admin/messages')
+        axios.get('/api/admin/messages'),
+        axios.get('/api/admin/partnerships').catch(err => {
+          console.warn('Partnerships table may not exist yet:', err);
+          return { data: [] };
+        })
       ]);
 
       setServices(servicesRes.data);
       setProjects(projectsRes.data);
       setMessages(messagesRes.data);
+      setPartnerships(partnershipsRes.data);
     } catch (error) {
-      toast.error('Failed to fetch data');
+      console.error('Fetch error:', error);
+      toast.error('Failed to fetch data. Please check if database tables exist.');
     }
   };
 
@@ -244,7 +252,8 @@ const AdminDashboard = () => {
     { id: 'services', label: 'Services', icon: Briefcase },
     { id: 'projects', label: 'Projects', icon: Users },
     { id: 'categories', label: 'Categories', icon: Edit },
-    { id: 'messages', label: 'Messages', icon: MessageSquare }
+    { id: 'messages', label: 'Messages', icon: MessageSquare },
+    { id: 'partnerships', label: 'Partnerships', icon: Users }
   ];
 
   return (
@@ -391,7 +400,7 @@ const AdminDashboard = () => {
                 <p className="text-slate-600">Manage your website content and view analytics</p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
                 <div className="rounded-2xl p-5 bg-gradient-to-r from-orange-400 to-rose-400 text-white shadow-sm">
                   <div className="flex items-start justify-between">
                     <div>
@@ -424,6 +433,18 @@ const AdminDashboard = () => {
                     </div>
                     <div className="w-10 h-10 rounded-2xl bg-white/15 flex items-center justify-center">
                       <MessageSquare size={18} />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="rounded-2xl p-5 bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-sm">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <div className="text-sm/5 opacity-90">Partnerships</div>
+                      <div className="text-3xl font-bold mt-1">{partnerships.length}</div>
+                    </div>
+                    <div className="w-10 h-10 rounded-2xl bg-white/15 flex items-center justify-center">
+                      <UserPlus size={18} />
                     </div>
                   </div>
                 </div>
@@ -490,12 +511,16 @@ const AdminDashboard = () => {
                             <div className="text-2xl font-bold text-slate-900">{projects.length}</div>
                           </div>
                           <div className="rounded-2xl bg-white border border-slate-200 p-4">
-                            <div className="text-sm text-slate-600">Categories</div>
-                            <div className="text-2xl font-bold text-slate-900">{categories.length}</div>
-                          </div>
-                          <div className="rounded-2xl bg-white border border-slate-200 p-4">
                             <div className="text-sm text-slate-600">Messages</div>
                             <div className="text-2xl font-bold text-slate-900">{messages.length}</div>
+                          </div>
+                          <div className="rounded-2xl bg-white border border-slate-200 p-4">
+                            <div className="text-sm text-slate-600">Partnerships</div>
+                            <div className="text-2xl font-bold text-slate-900">{partnerships.length}</div>
+                          </div>
+                          <div className="rounded-2xl bg-white border border-slate-200 p-4">
+                            <div className="text-sm text-slate-600">Categories</div>
+                            <div className="text-2xl font-bold text-slate-900">{categories.length}</div>
                           </div>
                         </div>
                       </div>
@@ -661,6 +686,61 @@ const AdminDashboard = () => {
                         <div className="text-center py-12">
                           <MessageSquare className="mx-auto text-slate-300 mb-3" size={48} />
                           <p className="text-slate-600">No messages yet</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {activeTab === 'partnerships' && (
+                    <div className="space-y-4">
+                      {partnerships.map((partnership) => (
+                        <div key={partnership.id} className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                          <div className="flex justify-between items-start gap-3 mb-3">
+                            <div className="flex-1">
+                              <div className="flex items-center gap-3 mb-2">
+                                <div className="font-semibold text-slate-900">{partnership.partnershipName}</div>
+                                <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-lg text-xs font-medium">
+                                  {partnership.partnerType}
+                                </span>
+                              </div>
+                              <div className="text-sm text-slate-600 mb-2">
+                                <strong>Contact:</strong> {partnership.contactName}
+                              </div>
+                              <div className="text-sm text-slate-600">{partnership.contactEmail}</div>
+                              {partnership.phoneNumber && <div className="text-sm text-slate-600">{partnership.phoneNumber}</div>}
+                              <div className="mt-2 text-sm text-slate-600">
+                                <strong>Address:</strong> {partnership.streetAddress}, {partnership.city}
+                                {partnership.stateRegion && `, ${partnership.stateRegion}`} {partnership.zipCode}, {partnership.country}
+                              </div>
+                              {partnership.keepUpdated && (
+                                <div className="mt-2 inline-block px-3 py-1 bg-green-100 text-green-800 rounded-lg text-xs font-medium">
+                                  ✓ Wants Updates
+                                </div>
+                              )}
+                            </div>
+                            <button
+                              onClick={() => handleDelete('partnerships', partnership.id)}
+                              className="w-9 h-9 rounded-xl bg-white border border-slate-200 hover:bg-slate-100 text-red-600 inline-flex items-center justify-center"
+                              type="button"
+                            >
+                              <Trash2 size={16} />
+                            </button>
+                          </div>
+                          {partnership.message && (
+                            <div className="mt-3 pt-3 border-t border-slate-200">
+                              <p className="text-slate-700 whitespace-pre-wrap">{partnership.message}</p>
+                            </div>
+                          )}
+                          <p className="text-xs text-slate-500 mt-3">
+                            📅 {new Date(partnership.createdAt).toLocaleDateString()} at {new Date(partnership.createdAt).toLocaleTimeString()}
+                          </p>
+                        </div>
+                      ))}
+                      
+                      {partnerships.length === 0 && (
+                        <div className="text-center py-12">
+                          <Users className="mx-auto text-slate-300 mb-3" size={48} />
+                          <p className="text-slate-600">No partnership inquiries yet</p>
                         </div>
                       )}
                     </div>

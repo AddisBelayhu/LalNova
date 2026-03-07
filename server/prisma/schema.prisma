@@ -54,3 +54,22 @@ model ContactMessage {
 
   @@map("contact_messages")
 }
+
+model PartnershipInquiry {
+  id              String   @id @default(cuid())
+  partnershipName String   @map("partnership_name")
+  partnerType     String   @map("partner_type")
+  streetAddress   String   @map("street_address")
+  city            String
+  stateRegion     String?  @map("state_region")
+  zipCode         String   @map("zip_code")
+  country         String
+  contactName     String   @map("contact_name")
+  contactEmail    String   @map("contact_email")
+  phoneNumber     String   @map("phone_number")
+  message         String?  @db.Text
+  keepUpdated     Boolean  @default(false) @map("keep_updated")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  @@map("partnership_inquiries")
+}

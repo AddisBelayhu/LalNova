@@ -105,7 +105,7 @@ const About = () => {
           {/* Philosophy Hook */}
           <div className="text-center mb-16">
             <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary leading-tight">
-              We don't just build software; we engineer the efficiency that powers your future.
+              We engineer software that powers your future.
             </p>
           </div>
 

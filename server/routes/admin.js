@@ -139,4 +139,27 @@ router.delete('/messages/:id', async (req, res) => {
   }
 });
 
+// Partnership inquiries
+router.get('/partnerships', async (req, res) => {
+  try {
+    const partnerships = await prisma.partnershipInquiry.findMany({
+      orderBy: { createdAt: 'desc' }
+    });
+    res.json(partnerships);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch partnership inquiries' });
+  }
+});
+
+router.delete('/partnerships/:id', async (req, res) => {
+  try {
+    await prisma.partnershipInquiry.delete({
+      where: { id: req.params.id }
+    });
+    res.json({ message: 'Partnership inquiry deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to delete partnership inquiry' });
+  }
+});
+
 module.exports = router;
